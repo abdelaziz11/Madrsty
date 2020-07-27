@@ -23,6 +23,11 @@ class Course extends Model
         return $this->belongsTo(Grade::class, 'grade_id', 'id');
     }
 
+    public function lectures()
+    {
+        return $this->hasMany(Lecture::class, 'course_id', 'id');
+    }
+
     public function students()
     {
         return $this->belongsToMany(Student::class, 'courses_students', 'course_id', 'student_id');

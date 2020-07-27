@@ -19,17 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'teacher'], function () {
+Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function () {
     Route::get('/home', 'Teacher\TeacherController@home')->name('teachers.home');
+    Route::get('/{teacher}/courses', 'Teacher\TeacherController@teacher_courses')->name('teachers.courses');
+    Route::get('/{teacher}/courses/{course}/lectures', 'Teacher\TeacherController@teacher_course_lectures')->name('teacher.course.lectures');
 });
 
 Route::group(['prefix' => 'student'], function () {
     Route::get('/home', 'Student\StudentController@home')->name('students.home');
 });
 
-Route::group(['middleware' => 'auth:teacher'], function () {
-    Route::get('/home', 'Student\StudentController@home')->name('students.home');
-});
 
 Route::group(['middleware' => 'auth:student'], function () {
     Route::get('/home', 'Student\StudentController@home')->name('students.home');

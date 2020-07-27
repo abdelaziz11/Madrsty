@@ -21,6 +21,24 @@ class CoursesTableSeeder extends Seeder
             'student_id' => 1
         ]);
 
+        $course = new Course();
+        $course->name = 'Arabic Course';
+        $course->teacher_id = 1;
+        $course->grade_id = 2;
+        $course->save();
+        $course->students()->attach([
+            'student_id' => 2
+        ]);
+
+        $course = new Course();
+        $course->name = 'Arabic Course';
+        $course->teacher_id = 1;
+        $course->grade_id = 3;
+        $course->save();
+        $course->students()->attach([
+            'student_id' => 3
+        ]);
+
         $course2 = new Course();
         $course2->name = 'Math Course';
         $course2->teacher_id = 2;
