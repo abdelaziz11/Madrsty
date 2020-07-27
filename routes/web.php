@@ -21,6 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'teacher'], function () {
     Route::get('/home', 'Teacher\TeacherController@home')->name('teachers.home');
+
+    //routing to profile method in TaacherController to get teacher data and his own courses
+    Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');
 });
 
 Route::group(['prefix' => 'student'], function () {
