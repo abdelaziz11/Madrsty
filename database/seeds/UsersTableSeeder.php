@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
         $user->name = 'admin';
         $user->email = 'admin@admin.com';
+        $user->phone_number = '01119119255';
         $user->password = Hash::make('a');
         $user->save();
     }

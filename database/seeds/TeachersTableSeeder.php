@@ -16,6 +16,7 @@ class TeachersTableSeeder extends Seeder
         $teacher = new Teacher();
         $teacher->name = 'Selim';
         $teacher->email = 'Selim@example.com';
+        $teacher->phone_number = '01119119255';
         $teacher->password = Hash::make('s');
         $teacher->subject_id = 1;
         $teacher->save();
@@ -23,6 +24,7 @@ class TeachersTableSeeder extends Seeder
         $teacher2 = new Teacher();
         $teacher2->name = 'Sherif';
         $teacher2->email = 'Sherif@example.com';
+        $teacher2->phone_number = '01119119255';
         $teacher2->password = Hash::make('s');
         $teacher2->subject_id = 2;
         $teacher2->save();
@@ -30,6 +32,7 @@ class TeachersTableSeeder extends Seeder
         $teacher3 = new Teacher();
         $teacher3->name = 'Khalid';
         $teacher3->email = 'Khalid@example.com';
+        $teacher3->phone_number = '01119119255';
         $teacher3->password = Hash::make('k');
         $teacher3->subject_id = 3;
         $teacher3->save();
@@ -37,6 +40,7 @@ class TeachersTableSeeder extends Seeder
         $teacher4 = new Teacher();
         $teacher4->name = 'Ahmed';
         $teacher4->email = 'Ahmed@example.com';
+        $teacher4->phone_number = '01119119255';
         $teacher4->password = Hash::make('a');
         $teacher4->subject_id = 4;
         $teacher4->save();
