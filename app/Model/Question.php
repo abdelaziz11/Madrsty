@@ -4,7 +4,8 @@ namespace App\Model;
 
 use App\Model\Course;
 use App\Model\Student;
-use App\Model\Question;
+use App\Model\Answer;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model

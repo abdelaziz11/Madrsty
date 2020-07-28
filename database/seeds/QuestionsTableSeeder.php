@@ -27,32 +27,28 @@ class QuestionsTableSeeder extends Seeder
         $question3 = new Question();
         $question3->title = 'what is course three?';
         $question3->course_id = 3;
-        $question3->student_id = 2;
+        $question3->student_id = 1;
         $question3->save();
 
         $question4 = new Question();
         $question4->title = 'what is course four?';
         $question4->course_id = 4;
-        $question4->student_id = 3;
+        $question4->student_id = 1;
         $question4->save();
 
         $question5 = new Question();
         $question5->title = 'what is course one again?';
         $question5->course_id = 1;
-        $question5->student_id = 3;
+        $question5->student_id = 1;
         $question5->save();
 
         $question6 = new Question();
         $question6->title = 'what is course two again?';
         $question6->course_id = 2;
-        $question6->student_id = 4;
+        $question6->student_id = 1;
         $question6->save();
 
-        $question7 = new Question();
-        $question7->title = 'what is course three again?';
-        $question7->course_id = 3;
-        $question7->student_id = 5;
-        $question7->save();
+
 
     }
 }
