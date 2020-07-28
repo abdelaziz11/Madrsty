@@ -1,0 +1,100 @@
+/* body{
+  background-image: url(../images/bg-01.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+.card input{
+  text-align: right;
+  padding-right: 5px !important;
+}
+
+.row .display{
+ 
+    visibility: hidden;
+  }
+  .row .display h1{
+    text-align: center;
+    color: #33b5e5;
+    font-size: 60pt;
+    font-weight: 900;
+  }
+  
+  .row .col-md-4 img{
+    width: 100%;
+  }
+  .login-card{
+    margin-top: 40%;
+  }
+  .login-card .custom-select{
+    background:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat left.75rem center/8px 10px;
+  
+    text-align: right;
+  
+  }
+  .login-card label{
+    right: 0 !important;
+    left: auto;
+  }
+   .login-card .md-form .fa-phone{
+    rotate: 180deg;
+  }
+  .login-card .span{
+    float: right;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #33b5e5;
+  }
+  
+  
+  
+  /******************************registration*************************/
+  body{
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .card-register{
+    /* background-color: transparent !important; */
+    margin: 0 auto;
+    width: 30%;
+    margin-top: 7%;
+    
+  }
+  
+  .card-register input {
+    text-align: right !important;
+  }
+  .card-register label{
+    float: right !important;
+  }
+  
+  .md-form label{
+    right: 0 !important;
+    left: auto;
+  }
+  
+  .card-register{
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  }
+
+  .card-register .custom-radio{
+    display: inline-block;
+    padding-right: 30px;
+  
+  }
+  .card-register span{
+    float: right;
+    margin: 15px 0 15px;
+  
+  }
+  .card-register .custom-select{
+    background:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat left.75rem center/8px 10px;
+  
+    text-align: right;
+  
+  }
+  
+  

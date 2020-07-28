@@ -1,0 +1,157 @@
+
+
+/*the same style of home page*/
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+
+/********************************************start navbar**************************************************/
+.navbar ul{
+    margin: 0 auto;
+}
+ .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+    background-color: transparent;  
+}
+
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link:after{
+
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    transform: scaleX(1);
+}
+
+
+
+/********************************************end navbar**************************************************/
+
+
+.teacher-profile .container{
+    max-width: 1400px !important;
+}
+/****************************************************
+                    start sidebar
+****************************************************/
+
+        /************main-info**********/
+.teacher-profile .main-info ,main .more-info{
+    text-align: center;
+    border: 1px solid #dddddd;
+    padding: 50px;
+    margin-top: 50px;
+
+}
+.teacher-profile .main-info img{
+    border-radius: 50%;
+    margin-bottom: 50px;
+    -webkit-box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63);
+    -moz-box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63);
+    box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63);
+}
+.teacher-profile .main-info h1{
+    font-weight: 900;
+    font-size: 30pt !important;
+}
+.teacher-profile .main-info p{
+    font-size: 15px;
+}
+.teacher-profile .main-info span {
+    margin-left: 8px;
+}
+.teacher-profile .main-info span  i{
+    color: #ffc100;
+}
+
+.teacher-profile .main-info .btn-dark-green{
+    width: 100%;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 12pt;
+    margin: 25px 0;
+
+}
+.teacher-profile .main-info table{
+    margin-top: 30px;
+}
+.teacher-profile .main-info table tr td{
+    text-align: left;
+    padding-right: 5px;
+}
+.teacher-profile .main-info table tr td:nth-child(3){
+    float: right;
+}
+
+
+        /************more-info**********/
+
+
+.teacher-profile .more-info{
+text-align: left;
+}
+.teacher-profile .more-info h5{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.teacher-profile .more-info .btn{
+    border: 1px solid #dddddd !important;
+    border-radius: 15px;
+    padding: 10px 8px;
+    
+}
+/****************************************************
+                    end sidebar
+****************************************************/
+
+
+
+/****************************************************
+                    start courses
+****************************************************/
+.teacher-profile .col-lg-8{
+    margin-top: 250px;
+}
+.teacher-profile .col-lg-8 .courses{
+    text-align: center;
+}
+.teacher-profile .col-lg-8 .courses h1{
+    margin-bottom: 100px;
+}
+.teacher-profile .col-lg-8 .view{
+    box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
+}
+.teacher-profile .col-lg-8 .img-fluid {
+    -webkit-box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
+    -moz-box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
+    box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
+}
+/****************************************************
+                    end courses
+****************************************************/

@@ -1,0 +1,29 @@
+
+.teacher-students .content .table tr td h1{
+    font-weight: bold;
+    display: inline;
+}
+.teacher-students .content .table tr td .fa-user-graduate{
+    font-size: 50px;
+    margin: 0px 20px;
+}
+.teacher-students .content .table tr td .info{
+    display: inline;
+    position: absolute;
+    margin-left: 10px;
+}
+.teacher-students .content .table tr td{
+    padding-bottom: 3rem !important;
+}
+.teacher-students .content .table tr td ul{
+    list-style: none;
+    margin-left: 20px;
+}
+.teacher-students .content .table td:nth-child(2){
+    width: 100px;
+}
+.teacher-students .content .table tr td:nth-child(2) i{
+    color: #6190ae;
+    font-size: 50px;
+    cursor: pointer;
+}
