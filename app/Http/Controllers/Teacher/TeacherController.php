@@ -32,7 +32,7 @@ class TeacherController extends Controller
         $courses_id = $teacher->courses()->select('id')->get();
         $totalStudents = DB::table('courses_students')->select(DB::raw('COUNT(*) as totalStudents'))->whereIn('course_id',$courses_id)->get();
         //---------------------------
-        dd($totalStudents);
+        return view('Teachers.profile', compact('teacher', 'courses'));
     }
 
     public function teacher_courses(Teacher $teacher)
@@ -71,10 +71,6 @@ class TeacherController extends Controller
         return view('Teachers.course_questions', compact('course', 'course_questions'));
     }
 
-    public function home()
-    {
-        return view('Teachers.home');
-    }
 
     
 
