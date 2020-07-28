@@ -23,6 +23,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     Route::get('/home', 'Teacher\TeacherController@home')->name('teachers.home');
     Route::get('/{teacher}/courses', 'Teacher\TeacherController@teacher_courses')->name('teachers.courses');
     Route::get('/{teacher}/courses/{course}/lectures', 'Teacher\TeacherController@teacher_course_lectures')->name('teacher.course.lectures');
+
+    //routing to profile method in TaacherController to get teacher data and his own courses
+    Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');
 });
 
 Route::group(['prefix' => 'student'], function () {
