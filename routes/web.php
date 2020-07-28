@@ -26,6 +26,19 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
 
     //routing to profile method in TaacherController to get teacher data and his own courses
     Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');
+
+    // teacher add new material to his course
+    Route::post('/addMaterial', 'Course\CourseController@addMaterial')->name('teachers.addMaterial');
+
+    //routing to method show students assigned to current course
+    Route::get('/courseStudents/{id}', 'Course\CourseController@courseStudents')->name('teachers.courseStudents');
+
+    //routing to method show all materails of current course
+    Route::get('/courseMaterials/{id}', 'Course\CourseController@courseMaterials')->name('teachers.courseMaterials');
+
+    //routing to method show student's questions and answers on current course only
+    Route::get('/studentQuestions/{course_id}/{student_id}', 'Student\StudentController@studentQuestions')->name('teachers.studentQuestions');
+
 });
 
 Route::group(['prefix' => 'student'], function () {

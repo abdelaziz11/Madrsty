@@ -4,6 +4,8 @@ namespace App\Model;
 
 use App\Model\Course;
 use App\Model\Student;
+use App\Model\Answer;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
@@ -18,5 +20,10 @@ class Question extends Model
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'question_id', 'id');
     }
 }
