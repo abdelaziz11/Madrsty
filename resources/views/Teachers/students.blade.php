@@ -38,7 +38,7 @@
                         <td>
                             <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid mx-2" width="80"> 
                             <div class="info">
-                                <h3>Ahmed Gomla</h3>
+                                <h3>{{ Auth::User()->name }}</h3>
                             <ul class="list-group">
                                 <li><i class="fas fa-mobile"></i> 012345678954</li>
                                 <li><i class="fas fa-map-marker"></i> st-el ahram -cairo</li>
@@ -61,7 +61,7 @@
                             
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h4 class="modal-title w-100" id="myModalLabel">Ahmed's Questions</h4>
+                                    <h4 class="modal-title w-100" id="myModalLabel">{{ Auth::User()->name }}'s Questions</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
