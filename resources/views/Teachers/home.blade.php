@@ -9,6 +9,8 @@
         <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/teacher-profile.css') }}" >
         <link rel="stylesheet" href="{{ asset('css/teacher-courses.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/teacher-students.css') }}">
+
             <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -34,8 +36,18 @@
         <div id="app">
             <app></app>
         </div>
+        <input type="hidden" id="id" value="{{ Auth::User()->id }}">
+        <input type="hidden" id="name" value="{{ Auth::User()->name }}">
+        <input type="hidden" id="email" value="{{ Auth::User()->email }}">
+        <input type="hidden" id="subject_id" value="{{ Auth::User()->subject_id }}">
         {{-- <script src="{{ mix('js/bootstrap.js') }}"></script> --}}
         <script src="{{ mix('js/app.js') }}"></script>
         <script src="https://cdn.rawgit.com/nnattawat/flip/v1.1.2/dist/jquery.flip.min.js"></script>
+        <script>
+            localStorage.setItem('id' , $('#id').val())
+            localStorage.setItem('name' , $('#name').val())
+            localStorage.setItem('email',$('#email').val())
+            localStorage.setItem('subject_id' , $('#subject_id').val())
+        </script>
     </body>
 </html>

@@ -13,6 +13,8 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $students = $course->students()->get();
+        return response()->json($students);
+        
         dd($students);
     }
 

@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import App from './views/App'
 import Profile from './views/Profile'
 import courses from './views/courses'
+import students from './views/students'
 
 console.log("hello")
 const router = new VueRouter({
@@ -20,6 +21,11 @@ const router = new VueRouter({
             path: '/courses',
             name: 'courses',
             component: courses
+        },
+        {
+            path: '/students/:id',
+            name: 'student',
+            component: students
         }
     ],
 });

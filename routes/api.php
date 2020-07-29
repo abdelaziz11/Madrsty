@@ -18,7 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/{teacher}/courses', 'Teacher\TeacherController@teacher_courses');
-Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function () {
 
-});
+Route::get('/courseStudents/{id}', 'Course\CourseController@courseStudents');
+
+Route::get('/studentQuestions/{course_id}/{student_id}', 'Student\StudentController@studentQuestions')->name('teachers.studentQuestions');
+
+
 

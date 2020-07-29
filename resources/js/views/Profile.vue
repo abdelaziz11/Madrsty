@@ -6,7 +6,7 @@
                 <div class="col-lg-4 col-md-5 xs-12">
                     <div class="main-info">
                         <img src="../../images/profile-img.webp" alt="">
-                        <h1>Ahmed Gomla</h1>
+                        <h1>{{ name }}</h1>
                         <p>You want it done right? Message me</p>
                         <span>
                             <i class="fas fa-star"></i>
@@ -160,6 +160,14 @@
 
 <script>
 export default {
-    name:"Profile"
+    name:"Profile",
+    data:()=>{
+        return {
+            id:localStorage.id,
+            name:localStorage.name,
+            email:localStorage.email,
+            subject_id:localStorage.subject_id,
+        }
+    }
 }
 </script>

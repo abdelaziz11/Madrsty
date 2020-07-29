@@ -1,7 +1,7 @@
 <template>
     <div class="teacher-courses">
         <div class="container">
-            <div class="row">
+            <div class="row" style="justify-content:space-between">
                 <div v-for="course in courses" :key="course.id" class="col-md-3 col-sm-6 col-xs-12" style="margin: 80px 0 100px 0;" >
 
                 <!--Exemple card-->
@@ -20,7 +20,8 @@
                             <div class="theback">
                                 <div class="my-gradient radius-back"></div>
                                 <p class="textarea">{{course.name}}</p>
-                                    <a class=" waves-effect waves-light ">students</a>
+                                    <router-link class=" waves-effect waves-light " :to="'/students/'+course.id">students</router-link>
+
                                     <a class=" waves-effect waves-light  ">student courses</a>
                                     <a class=" waves-effect waves-light ">student material</a>
                                     <a class=" waves-effect waves-light " style="padding: 10px 20px;">posts</a>
@@ -55,7 +56,7 @@ export default {
         }
     },
     mounted(){
-        axios.get("http://127.0.0.1:3030/api/1/courses").then((response)=>{
+        axios.get("http://127.0.0.1:8000/api/1/courses").then((response)=>{
             this.courses = response.data
         }).catch((error)=>{
 
