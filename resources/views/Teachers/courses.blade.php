@@ -58,7 +58,7 @@
                                         <a class=" waves-effect waves-light " style="padding: 10px 20px;">posts</a>                                                                
                                     </div>
                                 <!--/Back card-->
-                            </div>
+                            </div>  
                             <div class="top waves-effect waves-light">
                                 <h3>{{ $course->name }}</h3>
                             </div>
@@ -73,7 +73,6 @@
         </div>
     </div>
 
-    <script src="{{asset('/js/main.js')}}"></script>
 
     <script src="https://cdn.rawgit.com/nnattawat/flip/v1.1.2/dist/jquery.flip.min.js"></script>
 </body>

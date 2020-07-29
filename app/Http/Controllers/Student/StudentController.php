@@ -12,8 +12,14 @@ class StudentController extends Controller
 {
     public function studentQuestions($course_id,$student_id)
     {
-        $questions = Question::where('course_id',$course_id)->where('student_id',$student_id)->get();
-        // $answers = $questions->answers()->get();
-        dd($questions);
+        $questions = Question::where('course_id',$course_id)->where('student_id',$student_id)->get()->sortByDesc("id")->first();
+        // dd($questions);
+        return response()->json($questions);
+    }
+
+    public function questionAnswers($question_id)
+    {
+        $answers = Answer::where('question_id',$question_id)->get();
+        return response()->json($answers);
     }
 }

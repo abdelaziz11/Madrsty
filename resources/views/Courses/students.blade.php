@@ -130,15 +130,28 @@
         console.log($(this).attr('data-studentid'))
         var student_id = $(this).attr('data-studentid')
         var course_id = $(this).attr('data-courseid')
-        $.get(`http://127.0.0.1:3030/api/studentQuestions/${course_id}/${student_id}`)
+        $.get(`/api/studentQuestions/${course_id}/${student_id}`)
         .done(function(response) {
-          console.log(response)
+            console.log(response)
+            $('#modal').html('')
+            $('#modal').append("<div class='card'><div class='card-header' role='tab' id='headingOne1'><div data-parent='#accordionEx'><h5 class='mb-0'>"+response.title+" </h5></div></div><div id='collapseOne1' class='collapse show' role='tabpanel' aria-labelledby='headingOne1' data-parent='#accordionEx'><div class='card-body' id='"+response.id+"'></div></div></div>")
+            $.get(`http://127.0.0.1:3030/api/questionAnswers/${response.id}`)
+            .done(function(res){
+              console.log(res)
+              res.forEach(el => {
+                $(`#${response.id}`).append("- " + el.body + "<br>")
+                
+              });
+
+            })
+            .fail(function(){
+
+            })
         })
         .fail(function(erro) {
           console.log('Failed to fetch the Access Token with error: ' + erro);
         });
         
-        $('#modal').append("<div class='card'><div class='card-header' role='tab' id='headingOne1'><a data-toggle='collapse' data-parent='#accordionEx' href='#collapseOne1' aria-expanded='true' aria-controls='collapseOne1'><h5 class='mb-0'> <i class='fas fa-angle-down rotate-icon'></i></h5></a></div><div id='collapseOne1' class='collapse show' role='tabpanel' aria-labelledby='headingOne1' data-parent='#accordionEx'><div class='card-body'>Anim pariatur</div></div></div>")
        })
      </script>
 </body>
