@@ -32,15 +32,14 @@ Course's Questions
                                 
                                 <div class="theback">
                                     <div class="my-gradient radius-back"></div>
-                                    <p class="textarea">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et </p>
+                                    <p class="textarea">{{ $course->name }} </p>
                                         <a href="{{ route('teacher.course.students', [$course->teacher->id, $course->id]) }}" class=" waves-effect waves-light ">students</a>                                                                
                                         <a class=" waves-effect waves-light  ">student courses</a>                                                                
                                         <a class=" waves-effect waves-light ">student material</a>                                                                
                                         <a class=" waves-effect waves-light " style="padding: 10px 20px;">posts</a>                                                                
                                     </div>
                                 <!--/Back card-->
-                            </div>
+                            </div>  
                             <div class="top waves-effect waves-light">
                                 <h3>{{ $course->name }}</h3>
                             </div>
