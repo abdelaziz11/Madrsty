@@ -12,8 +12,9 @@ class CourseController extends Controller
 {
     public function course_students(Teacher $teacher, Course $course)
     {
+        $course_id = $course->id;
         $course_students = $course->students;
-        return view('Courses.students', compact('course_students'));        
+        return view('Courses.students', compact('course_students','course_id'));        
     }
     
 

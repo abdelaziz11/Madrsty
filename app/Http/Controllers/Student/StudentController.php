@@ -12,8 +12,8 @@ class StudentController extends Controller
 {
     public function studentQuestions($course_id,$student_id)
     {
-        $questions = Question::where('course_id',$course_id)->where('student_id',$student_id)->first();
-        $answers = $questions->answers()->get();
-        dd($answers);
+        $questions = Question::where('course_id',$course_id)->where('student_id',$student_id)->get();
+        // $answers = $questions->answers()->get();
+        dd($questions);
     }
 }
