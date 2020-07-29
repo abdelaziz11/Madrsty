@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Teacher;
 
 use Carbon\Carbon;
+use App\Model\Grade;
 use App\Model\Course;
+use Firebase\JWT\JWT;
 use App\Model\Lecture;
+use GuzzleHttp\Client;
 use App\Model\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Lectures\CreateLectureRequest;
 
 
@@ -19,6 +23,7 @@ class TeacherController extends Controller
     public function __construct()
     {
         $this->middleware('auth:teacher')->except([]);
+        $this->meeting_data = '';
     }
 
     public function profile()
@@ -60,6 +65,10 @@ class TeacherController extends Controller
         $lecture->name = $request->name;
         $lecture->lecture_date = $request->lecture_date;
         $lecture->course_id = $course->id;
+        $this->meeting_data = $this->create_meeting();
+        $lecture->meeting_name = $this->meeting_data->topic;
+        $lecture->meeting_password = $request->meeting_password;
+        $lecture->meeting_id = $this->meeting_data->id;
         $lecture->save();
 
         return redirect()->route('teacher.course.lectures', [$course->teacher->id, $course->id]);
@@ -69,6 +78,70 @@ class TeacherController extends Controller
     {
         $course_questions = $course->questions;
         return view('Teachers.course_questions', compact('course', 'course_questions'));
+    }
+
+    public function add_new_course(Teacher $teacher)
+    {
+        $teacher_courses_grades = $teacher->courses->pluck('grade_id');
+        $grades = Grade::whereNotIn('id', $teacher_courses_grades)->get();
+        return view('Teachers.add-course', compact('grades'));
+    }
+
+    public function store_new_course(CreateCourseRequest $request, Teacher $teacher)
+    {
+        $course = new Course();
+        $course->name = $request->name;
+        $course->teacher_id = Auth::id();
+        $course->grade_id = $request->grade_id;
+        $course->save();
+
+        return redirect()->route('teachers.courses', $teacher->id);
+    }
+
+
+    protected function generate_token()
+    {
+        //this function will create the jwt token for the zoom api authorization
+        $zoom_api_key = 'aei7SOvRStmKoWHIXUaN1Q';
+        $zoom_api_secret = 'jhDCXURIT2aC8QymaUlzrDd0dTarlPQkRyi6';
+
+        $jwt_token = [
+            'iss' => $zoom_api_key,
+            'exp' => time() + 4000,
+        ];
+
+        return JWT::encode($jwt_token, $zoom_api_secret);
+    }
+
+    protected function create_meeting()
+    {
+        //this function will create a GuzzleHttp object to talk to the zoom api
+        //then i will pass to it the meeting creation api and the token created and the json which includes the meeting name and password
+        //then i will return the the Guzzle response
+    
+        $client = new Client(['base_uri' => 'https://api.zoom.us']);
+        $response = $client->request('post', '/v2/users/me/meetings', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$this->generate_token(),
+            ],
+
+            'json' => [
+                'topic' => request('meeting_name'),
+                'password' => request('meeting_password'),
+                'settings' => [
+                    'host_video' => true,
+                    'join_before_host' => false,
+                    'meeting_authentication' => false,
+                    'mute_upon_entry' => true,
+                    'participant_video' => false,
+                ],
+            ],
+
+            
+        ]);
+
+        return json_decode($response->getBody());
+        
     }
 
 

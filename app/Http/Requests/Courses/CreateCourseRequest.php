@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Lectures;
+namespace App\Http\Requests\Courses;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateLectureRequest extends FormRequest
+class CreateCourseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class CreateLectureRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:lectures',
-            'lecture_date' => 'required',
-            'meeting_name' => 'required|unique:lectures',
-            'meeting_password' => 'required',
+            'name' => 'required',
+            'grade_id' => 'required',
         ];
     }
 }

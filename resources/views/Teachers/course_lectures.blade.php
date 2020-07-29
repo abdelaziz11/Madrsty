@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-    Course <strong style="color:red">{{ $course->name }}</strong> lectures</lectures>
+    Course <strong style="color:red">{{ $course->name }}</strong> lectures
     </div>
 
     <div class="card-body" v-for="lecture in lectures">
@@ -32,6 +32,16 @@
             <div class="form-group">
                 <label for="">Lecture Date: </label>
                 <input type="datetime-local" class="form-control" name="lecture_date">
+            </div>
+
+            <div class="form-group">
+                <label for="">Meeting Name: </label>
+                <input type="text" class="form-control" name="meeting_name">
+            </div>
+
+            <div class="form-group">
+                <label for="">Meeting Password: </label>
+                <input type="text" class="form-control" name="meeting_password">
             </div>
 
             <button class="btn btn-success btn-s">Add Lecture</button>
