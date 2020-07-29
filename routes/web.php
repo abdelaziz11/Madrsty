@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function () {
-    Route::get('/home', 'Teacher\TeacherController@home')->name('teachers.home');
+    Route::get('/home', 'Teacher\TeacherController@profile')->name('teachers.home');
     Route::get('/{teacher}/courses', 'Teacher\TeacherController@teacher_courses')->name('teachers.courses');
     Route::get('/{teacher}/add-new-course', 'Teacher\TeacherController@add_new_course')->name('teacher.course.create');
     Route::post('/{teacher}/add-new-course', 'Teacher\TeacherController@store_new_course')->name('teacher.course.store');

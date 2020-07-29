@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link hover-underline-animation" href="teacher-courses.html">courses</a>
+                    <a class="nav-link hover-underline-animation" href="{{ route('teachers.courses', Auth::id() )}}">courses</a>
                 </li>
 
             </ul>
