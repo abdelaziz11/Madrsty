@@ -77,7 +77,8 @@ class TeacherController extends Controller
     public function get_course_questions(Teacher $teacher, Course $course)
     {
         $course_questions = $course->questions;
-        return view('Teachers.course_questions', compact('course', 'course_questions'));
+        $teacher = Auth::User();
+        return view('Teachers.course_questions', compact('teacher', 'course', 'course_questions'));
     }
 
     public function add_new_course(Teacher $teacher)

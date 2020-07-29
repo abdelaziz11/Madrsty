@@ -26,4 +26,10 @@ class AnswerController extends Controller
 
         return redirect()->back();
     }
+
+    public function all_question_answers(Teacher $teacher, Course $course, Question $question)
+    {
+        $question_answers = $question->answers;
+        return view('Questions.all_answers', compact('teacher', 'course', 'question', 'question_answers'));
+    }
 }

@@ -1,0 +1,72 @@
+/* .questions {
+    margin-top: 50px;
+    
+    
+}
+.questions .content {
+    width: 80%;
+   
+     */
+/*     
+}
+.questions .content .question{
+    padding: 15px;
+
+    margin-bottom: 40px ;
+    -webkit-box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.75);
+}
+.questions .content strong{
+    font-size: 20pt;
+    margin-top: 15px;
+}
+
+
+.questions .content p{
+    color: rgb(143, 139, 139);
+}
+.questions .new-answer {
+    text-align: right;
+}
+.questions .new-answer button{
+    margin-top: 20px;
+} */
+
+/******************************end top section*******************************/
+
+
+
+.questions .content{
+    margin-top: 50px;
+    padding: 20px;
+    margin-bottom: 40px ;
+    -webkit-box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.75);
+}
+.questions .content h4{
+    font-weight: bold;
+}
+.questions .content .counter{
+    border-radius: 50%;
+    background-color: rgb(65, 168, 65);
+    color: #fff;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+.questions .content .d-inline-block{
+    margin-top: 13px;
+}
+.questions .content .col-xl-2{
+    text-align: center;
+}
+.questions .content p{
+    color: rgb(143, 139, 139);
+}
+.questions .content .quest span{
+    font-weight: bold;
+    margin-right: 10px;
+}

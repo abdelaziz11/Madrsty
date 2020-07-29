@@ -1,0 +1,16 @@
+.answers .content .card {
+    margin-top: 50px;
+    padding: 20px;
+    margin-bottom: 40px ;
+
+}
+.answers .content h4{
+    font-weight: bold;
+}
+.answers .content p{
+    color: rgb(143, 139, 139);
+}
+.answers .content .quest span{
+    font-weight: bold;
+    margin-right: 10px;
+}

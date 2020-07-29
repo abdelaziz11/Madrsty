@@ -26,4 +26,10 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class, 'question_id', 'id');
     }
+
+    public function get_first_answer()
+    {
+        $first_answer = $this->answers()->orderBy('created_at', 'DESC')->pluck('body')->first();
+        return $first_answer;
+    }
 }

@@ -29,6 +29,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     Route::post('/{teacher}/courses/{course}/lectures/add-new-lectures', 'Teacher\TeacherController@add_new_lecture')->name('teacher.create-lecture');
     Route::get('/{teacher}/courses/{course}/questions', 'Teacher\TeacherController@get_course_questions')->name('teacher.course.questions');
     Route::post('/{teacher}/courses/{course}/questions/{question}/add-answer', 'Answer\AnswerController@store')->name('answer.store');
+    Route::get('/{teacher}/courses/{course}/questions/{question}/all-answers', 'Answer\AnswerController@all_question_answers')->name('question.answers');
 
     //routing to profile method in TaacherController to get teacher data and his own courses
     Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');

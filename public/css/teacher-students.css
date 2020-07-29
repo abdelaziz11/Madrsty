@@ -1,3 +1,10 @@
+.teacher-students .content{
+    -webkit-box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.75);
+    /* background: transparent; */
+
+}
 
 .teacher-students .content .table tr td h1{
     font-weight: bold;
@@ -22,8 +29,10 @@
 .teacher-students .content .table td:nth-child(2){
     width: 100px;
 }
-.teacher-students .content .table tr td:nth-child(2) i{
+.teacher-students .content .table tr td .fa-question-circle{
     color: #6190ae;
     font-size: 50px;
     cursor: pointer;
 }
+
+
