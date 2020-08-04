@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-
-</head>
-<body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-default sticky-top"  role="navigation" >
 
 <div class="container" style="color: white;">
@@ -32,6 +23,11 @@
             <li class="nav-item">
                 <a class="nav-link hover-underline-animation" href="{{ route('teachers.courses') }}">Classroom</a>
             </li>
+
+               <li class="nav-item">
+                <a class="nav-link hover-underline-animation" href="{{ route('teachers.schedule') }}">schedule</a>
+            </li>
+
              <li class="nav-item">
                 <a class="nav-link hover-underline-animation" href="{{ route('teacher.course.create') }}">Add course</a>
             </li>
@@ -55,18 +51,4 @@
 
 </div>
 </nav>
- <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
-    </script> 
-<script type="text/javascript">
-      $(document).ready(function () { 
-
-
-
-
-        }); 
-</script>
-
-</body>
-</html>
 

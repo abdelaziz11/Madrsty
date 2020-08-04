@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teacer-profile</title>
+@extends('layouts.front-end')
+
+@section('title')
+Course's Questions
+@endsection
+
+@section('style')
+
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -15,16 +18,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/teacher-profile.css')}}">
 
-
-  
-</head>
-<body>
+@endsection
 
     <!--==========================================================-->
     <!------------------------start navbar-------------------------->
     <!--==========================================================-->
+@section('content')
 
-   @include('partials.frontend-navbar')
     <!--==========================================================-->
     <!--------------------------end navbar-------------------------->
     <!--==========================================================-->
@@ -108,8 +108,4 @@
     <!--==========================================================-->
     <!------------------------end sidebar--------------------------->
     <!--==========================================================-->
-
-
-
-</body>
-</html>
+@endsection

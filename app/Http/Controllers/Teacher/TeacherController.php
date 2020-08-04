@@ -147,6 +147,21 @@ class TeacherController extends Controller
     }
 
 
+    public function show_schedule()
+    {
+      
+        $now = Carbon::now();
+        $start = date($now->startOfWeek(Carbon::SUNDAY));
+        $end = date($now->endOfWeek(Carbon::THURSDAY));
+        $course = Course::where('teacher_id', Auth::id())->select('id')->get();
+        $course_lectures = Lecture::whereIn('course_id',$course)->get();
+        dd($course_lectures);
+        return view('Teachers.course_lectures', compact( 'course', 'course_lectures'));
+
+
+    }
+
+
     
 
 }

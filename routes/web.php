@@ -27,7 +27,8 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function () {
-
+    
+    Route::get('/schedule','Teacher\TeacherController@show_schedule')->name('teachers.schedule');
     Route::get('/home', 'Teacher\TeacherController@profile')->name('teachers.home');
 
     Route::get('/courses', 'Teacher\TeacherController@teacher_courses')->name('teachers.courses');

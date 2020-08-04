@@ -14,6 +14,8 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/teacher-profile.css')}}">
+        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
     @yield('style')
 
 
@@ -26,19 +28,35 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
+
+
+
 <body style="">
 
     <!--==========================================================-->
     <!------------------------start navbar-------------------------->
     <!--==========================================================-->
 
+<div id="nav" style="display: none;">
    @include('partials.frontend-navbar')
+   </div>
     <!--==========================================================-->
     <!--------------------------end navbar-------------------------->
     <!--==========================================================-->
+<div class="wrapper" id="loading" style="  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;">
+  <div class="cover"></div>
+  <div class="page"></div>
+  <div class="inner-border"></div>
+ 
+</div>     
 
+<div id="content" style="display: none;">
     @yield('content')
-   
+</div>
     <!--==========================================================-->
     <!------------------------start sidebar------------------------->
     <!--==========================================================-->
@@ -49,6 +67,18 @@
 
     <!-- <script src="{{asset('/js/main.js')}}"></script> -->
     @yield('scripts')
+<script type="text/javascript">
+    $( document ).ready(function() {
+        
+        setTimeout(function() { 
+       $('#nav').show()
+       $('#loading').hide()
+       $('#content').show()
+    }, 1000);
 
+       
+    });
+
+</script>
 </body>
 </html>
