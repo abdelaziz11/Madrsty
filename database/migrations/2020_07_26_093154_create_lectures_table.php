@@ -18,6 +18,9 @@ class CreateLecturesTable extends Migration
             $table->string('name');
             $table->unSignedBigInteger('course_id');
             $table->timestamp('lecture_date');
+            $table->string('meeting_name');
+            $table->string('meeting_password');
+            $table->string('meeting_id');
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');

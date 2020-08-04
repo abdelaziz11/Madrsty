@@ -23,6 +23,11 @@ class Course extends Model
         return $this->belongsTo(Grade::class, 'grade_id', 'id');
     }
 
+    public function lectures()
+    {
+        return $this->hasMany(Lecture::class, 'course_id', 'id');
+    }
+
     public function students()
     {
         return $this->belongsToMany(Student::class, 'courses_students', 'course_id', 'student_id');
@@ -31,5 +36,10 @@ class Course extends Model
     public function questions()
     {
         return $this->hasMany(Question::class, 'course_id', 'id');
+    }
+
+    public function courseDetails()
+    {
+        return $this->hasMany(CourseDetail::class, 'course_id', 'id')->orderBy('id','desc');
     }
 }

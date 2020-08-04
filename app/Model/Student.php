@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Model\Grade;
 use App\Model\Course;
+use App\Model\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -24,5 +25,10 @@ class Student extends Authenticatable
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'courses_students', 'student_id', 'course_id');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'student_id', 'id');
     }
 }

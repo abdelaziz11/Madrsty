@@ -36,7 +36,7 @@
 	<div class="container-fluid mt-3 mb-5">
 			<!--Grid row-->
 			<div class="row">
-	
+	          
 				<div class="col-md-4 display"  >
 					<h1>طالب</h1>
 					<a href="{{ route('register') }}"><img src="{{asset('/images/126-1260260_doctor-transparent-student-png-college-boy-student-png.png')}}" alt=""></a>
@@ -52,7 +52,7 @@
 						<div class="card-body z-depth-2 px-4">	
 							<div class="md-form">
 								<i class="fa fa-phone prefix grey-text"></i>
-								<input type="text" id="phoneNumber" name="phone_number" class="form-control">
+								<input type="text" id="phoneNumber" name="email" class="form-control">
 								<label for="phoneNumber">رقم التليفون </label>
 							</div>
 							<div class="md-form">
