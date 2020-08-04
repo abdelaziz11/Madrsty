@@ -13,7 +13,7 @@ Add New Lecture
 
     <div class="card-body" v-for="lecture in lectures">
         @if($course_lectures->isEmpty())
-         <div>  
+         <div>
                  <strong>Empty  </strong>
             </div>
         @endif
@@ -41,7 +41,7 @@ Add New Lecture
 
             <div class="form-group">
                 <label for="">Lecture Date: </label>
-                <input type="Date" class="form-control" name="lecture_date">
+                <input type="datetime-local" class="form-control" name="lecture_date">
             </div>
 
             <div class="form-group">
