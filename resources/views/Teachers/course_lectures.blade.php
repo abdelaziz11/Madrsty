@@ -32,7 +32,7 @@ Add New Lecture
                 Course <strong style="color:red">{{ $course->name }}</strong> lectures
                 </div>
 
-                <div class="card-body" v-for="lecture in lectures">
+                <div class="card-body" >
                     @if($course_lectures->isEmpty())
                     <div>  
                             <strong>Empty  </strong>
@@ -51,9 +51,7 @@ Add New Lecture
                             
                             @endforeach
                         </table>
-                        <!-- <div>
-                            Lecture Name: <strong>{{ $lecture->name }}</strong>
-                        </div> -->
+                       
                 </div>
             </div>
 
@@ -79,7 +77,7 @@ Add New Lecture
 
                         <div class="form-group">
                             <label for="">Lecture Date: </label>
-                            <input type="Date" class="form-control" name="lecture_date">
+                            <input type="datetime-local" class="form-control" name="lecture_date">
                         </div>
 
                         <div class="form-group">
