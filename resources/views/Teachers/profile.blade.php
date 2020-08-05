@@ -1,9 +1,21 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teacer-profile</title>
+=======
+@extends('layouts.front-end')
+
+@section('title')
+Course's Questions
+@endsection
+
+@section('style')
+
+
+>>>>>>> master
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -15,6 +27,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/teacher-profile.css')}}">
 
+<<<<<<< HEAD
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,12 +39,20 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
 <body>
+=======
+@endsection
+>>>>>>> master
 
     <!--==========================================================-->
     <!------------------------start navbar-------------------------->
     <!--==========================================================-->
+<<<<<<< HEAD
 
    @include('partials.frontend-navbar')
+=======
+@section('content')
+
+>>>>>>> master
     <!--==========================================================-->
     <!--------------------------end navbar-------------------------->
     <!--==========================================================-->
@@ -44,6 +65,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 xs-12">
+<<<<<<< HEAD
                     <div class="main-info">
                         <img src="{{asset('/images/profile-img.webp')}}" alt="">
                         <h1>{{ $teacher->name }}</h1>
@@ -97,12 +119,55 @@
                         <button class="btn btn-outline-blue-grey">my skills</button>
                         <button class="btn btn-outline-blue-grey">my skills</button>
                         <button class="btn btn-outline-blue-grey">my skills</button>
+=======
+                    <div class="main-info" style="  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+">
+                        <img src="{{asset('/images/profile-img.webp')}}" alt="">
+                        <h1>{{ $teacher->name }}</h1>
+                                                <br>
+                       <table style="margin-right: 10px;">
+                            <tr>
+                                <td><i class="fas fa-map-marker"></i></td>
+                                <td>{{ __('site.subject') }}</td>
+                                <td>{{$teacher_subjects->name}}</td>
+                            </tr>
+                             <tr>
+                                <td><i class="fas fa-clock"></i></td>
+                                <td>{{ __('site.total students') }}</td>
+                                <td>{{$totalStudents}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-user"></i></td>
+                            <td>{{ __('site.member since') }}</td>
+                                <td>{{$teacher->created_at}}</td>
+                            </tr>
+                           
+                       
+                        </table>
+                    </div>
+                    <div class="more-info">
+                        <h5>{{ __('site.description') }}</h5>
+                        <p></p>
+                        <hr>
+                        <h5>{{ __('site.languages') }}</h5>
+                        <p>{{ __('site.english') }}  - {{ __('site.arabic') }}</p>
+                        <hr>
+                        <h5>{{ __('site.linked accounts') }}</h5>
+                        <p><i class="fab fa-twitter"></i> twitter</p>
+                        <hr>
+                        <h5>{{ __('site.skills') }}</h5>
+                        <button class="btn btn-outline-blue-grey">{{ __('site.skills') }}</button>
+>>>>>>> master
                         
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7 xs-12">
                    <div class="courses">
+<<<<<<< HEAD
                     <h1>MY COURSES</h1>
+=======
+                    <h1>{{ __('site.my courses') }}</h1>
+>>>>>>> master
                     <div class="mdb-lightbox">
                         <div class="row">
                         @foreach($courses as $course)    
@@ -126,9 +191,13 @@
     <!--==========================================================-->
     <!------------------------end sidebar--------------------------->
     <!--==========================================================-->
+<<<<<<< HEAD
 
     <script src="{{asset('/js/main.js')}}"></script>
 
 
 </body>
 </html>
+=======
+@endsection
+>>>>>>> master

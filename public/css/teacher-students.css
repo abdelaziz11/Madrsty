@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+.teacher-students .content{
+   box-shadow:0px 4px 10px -1px rgba(151, 171, 187, 0.7);
+    /* background: transparent; */
+
+}
+>>>>>>> master
 
 .teacher-students .content .table tr td h1{
     font-weight: bold;
@@ -22,8 +30,17 @@
 .teacher-students .content .table td:nth-child(2){
     width: 100px;
 }
+<<<<<<< HEAD
 .teacher-students .content .table tr td:nth-child(2) i{
+=======
+.teacher-students .content .table tr td .fa-question-circle{
+>>>>>>> master
     color: #6190ae;
     font-size: 50px;
     cursor: pointer;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master

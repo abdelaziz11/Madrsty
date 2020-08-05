@@ -36,7 +36,7 @@
 	<div class="container-fluid mt-3 mb-5">
 			<!--Grid row-->
 			<div class="row">
-	
+	          
 				<div class="col-md-4 display"  >
 					<h1>طالب</h1>
 					<a href="{{ route('register') }}"><img src="{{asset('/images/126-1260260_doctor-transparent-student-png-college-boy-student-png.png')}}" alt=""></a>

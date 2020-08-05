@@ -17,13 +17,19 @@ class AnswerController extends Controller
 
     }
 
-    public function store(CreateAnswerRequest $request, Teacher $teacher, Course $course, Question $question)
+    public function store(CreateAnswerRequest $request, Question $question)
     {
         $answer = new Answer();
         $answer->body = $request->body;
-        $answer->question_id = $course->id;
+        $answer->question_id = $question->id;
         $answer->save();
 
         return redirect()->back();
+    }
+
+    public function all_question_answers( Course $course, Question $question)
+    {
+        $question_answers = $question->answers;
+        return view('Questions.all_answers', compact('course', 'question', 'question_answers'));
     }
 }

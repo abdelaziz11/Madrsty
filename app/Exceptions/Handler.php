@@ -57,11 +57,11 @@ class Handler extends ExceptionHandler
         switch($guard)
         {
             case 'teacher':
-                $login_route = 'teachers.login-form';
+                $login_route = 'login';
             break;
 
             case 'student':
-                $login_route = 'students.login-form';
+                $login_route = 'login';
             break;
 
             default:

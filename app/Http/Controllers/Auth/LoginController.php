@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     /*
@@ -32,8 +34,36 @@ class LoginController extends Controller
      *
      * @return void
      */
+    
+    public function show()
+    {
+      return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        //this function will log the user in
+        $credentials = request(['phone_number', 'password']);
+
+        if(Auth::guard('student')->attempt($credentials))
+        {
+            return redirect()->route('students.home');
+        }
+        else if (Auth::guard('teacher')->attempt($credentials))
+        {
+            return redirect()->route('teachers.home');
+        }
+
+        else
+        {
+            return back()->withErrors(['email'=>'Invalid Attempt! Check Credentials']);
+        }
+
+    }
+
+      
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware(['guest:student', 'guest:teacher', 'guest'])->only(['showLoginForm', 'login']);
     }
 }

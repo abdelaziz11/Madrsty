@@ -16,7 +16,7 @@ class AnswersTableSeeder extends Seeder
         $answer->body = 'this is the answer';
         $answer->question_id = 1;
         $answer->save();
-
+        
         $answer2 = new Answer();
         $answer2->body = 'this is the answer';
         $answer2->question_id = 1;

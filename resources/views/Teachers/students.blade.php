@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>teacer-students</title>
+=======
+    <title>teacher-students</title>
+>>>>>>> master
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -33,7 +37,11 @@
         <div class="content">
             <table class="table table-bordered mt-5" id="a">
                 <tr>
+<<<<<<< HEAD
                     <td colspan="2"  style="padding-bottom: 2rem !important;"><h1>My Students</h1> <i class="fas fa-user-graduate float-right"></i></td>
+=======
+                  <td colspan="2"  style="padding-bottom: 2rem !important;"><h1>{{ __('site.my students') }}</h1> <i class="fas fa-user-graduate float-right"></i></td>
+>>>>>>> master
                 </tr>
                 @foreach ($course_students as $student)
                      

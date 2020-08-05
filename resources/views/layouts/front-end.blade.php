@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>teacer-profile</title>
+=======
+    <title>@yield('title')</title>
+>>>>>>> master
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -14,6 +18,12 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/teacher-profile.css')}}">
+<<<<<<< HEAD
+=======
+        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+    @yield('style')
+>>>>>>> master
 
 
     <!-- JQuery -->
@@ -25,12 +35,20 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
+<<<<<<< HEAD
 <body>
+=======
+
+
+
+<body style="">
+>>>>>>> master
 
     <!--==========================================================-->
     <!------------------------start navbar-------------------------->
     <!--==========================================================-->
 
+<<<<<<< HEAD
    @include('partials.frontend-navbar')
     <!--==========================================================-->
     <!--------------------------end navbar-------------------------->
@@ -193,12 +211,56 @@
                 </div>
             </div>
     </main>
+=======
+<div id="nav" style="display: none;">
+   @include('partials.frontend-navbar')
+   </div>
+    <!--==========================================================-->
+    <!--------------------------end navbar-------------------------->
+    <!--==========================================================-->
+<div class="wrapper" id="loading" style="  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;">
+  <div class="cover"></div>
+  <div class="page"></div>
+  <div class="inner-border"></div>
+ 
+</div>     
+
+<div id="content" style="display: none;">
+    @yield('content')
+</div>
+    <!--==========================================================-->
+    <!------------------------start sidebar------------------------->
+    <!--==========================================================-->
+    
+>>>>>>> master
     <!--==========================================================-->
     <!------------------------end sidebar--------------------------->
     <!--==========================================================-->
 
+<<<<<<< HEAD
     <script src="{{asset('/js/main.js')}}"></script>
 
 
+=======
+    <!-- <script src="{{asset('/js/main.js')}}"></script> -->
+    @yield('scripts')
+<script type="text/javascript">
+    $( document ).ready(function() {
+        
+        setTimeout(function() { 
+       $('#nav').show()
+       $('#loading').hide()
+       $('#content').show()
+    }, 1000);
+
+       
+    });
+
+</script>
+>>>>>>> master
 </body>
 </html>

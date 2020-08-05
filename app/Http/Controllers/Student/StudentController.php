@@ -10,9 +10,15 @@ use App\Model\Answer;
 
 class StudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:student');
+    }
+    
     public function studentQuestions($course_id,$student_id)
     {
-        $questions = Question::where('course_id',$course_id)->where('student_id',$student_id)->get()->sortByDesc("id")->first();
+        $questions = Question::where('course_id',$course_id)->where('student_id',$student_id)->orderBy("id", "DESC")->get();
         // dd($questions);
         return response()->json($questions);
     }
@@ -21,5 +27,10 @@ class StudentController extends Controller
     {
         $answers = Answer::where('question_id',$question_id)->get();
         return response()->json($answers);
+    }
+
+    public function home()
+    {
+        return view('Students.home');
     }
 }

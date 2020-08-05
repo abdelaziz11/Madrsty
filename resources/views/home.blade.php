@@ -1,190 +1,744 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Job Applicantions</title>
-
-    <!-- Font Icon -->
-    {{-- <link rel="stylesheet" href="{{ asset('fonts/material-icon/css/material-design-iconic-font.min.css') }}"> --}}
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="{{ asset('css/applicantStyle.css') }}">
-    <style>
-        .button {
-          background-color: #4CAF50; /* Green */
-          border: none;
-          color: white;
-          padding: 16px 32px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          transition-duration: 0.4s;
-          cursor: pointer;
-        }
-        
-        .button1 {
-          background-color: #4CAF50; 
-          color: white; 
-          border: 1px solid #4CAF50;
-        }
-        
-        .button1:hover {
-          background-color: white;
-          color: #4CAF50;
-        }
-        
-        .alert {
-          padding: 20px;
-          background-color: #f44336;
-          color: white;
-        }
-        .closebtn {
-          margin-left: 15px;
-          color: white;
-          font-weight: bold;
-          float: right;
-          font-size: 22px;
-          line-height: 20px;
-          cursor: pointer;
-          transition: 0.3s;
-        }
-        .closebtn:hover {
-          color: black;
-        }
-        </style>
-</head>
-
-<body id="body">
-
-    <div class="lds-roller" id="load" style=" position:absolute;
-    display:none;
-          top: 50%;
-          left: 50%;
-          margin-top: -50px;
-          margin-left: -50px;
-          width: 100px;
-          height: 100px; color:#ffde00;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    
-    <div class="container">
-    <div class="main" id="main">
-
-        <section class="signup">
-            <!-- <img src="images/signup-bg.jpg" alt=""> -->
-            
-                <div class="signup-content">
-                    <form id="upload-form" method="post" action="{{ route('teachers.addMaterial') }}" class="signup-form"  >
-                      @if (Session::get('success')!=null)
-                      <div class="alert" style="background-color: #4CAF50;" id="s"><span class="closebtn" onclick="document.getElementById('s').style.display='none';">&times;</span> {{ Session::get('success') }}  </div>
-                          
-                      @endif
-                        <div id="alert">
-                        </div>
-                        <!-- input name -->
-                        @csrf
-                        <h2 class="form-title">Job Application</h2>
-                        
-                        <div class="form-group">
-                            <label for="name" style="margin: 15px;">Title</label>
-                            <input type="text" value="1" class="form-input" name="course_id" id="course_id" placeholder="Name"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" style="margin: 15px;">Title</label>
-                            <input type="text" class="form-input" name="title" id="title" placeholder="Name" required/>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" style="margin: 15px;">Body</label>
-                            <input type="text" id="body" class="form-input" name="body" id="body" placeholder="Email" required/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="cars" style="margin: 15px;">Upload Your File</label>
-                            <input type="file" id="input-file" required>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="button" onclick="firebaseUpload(event)" class="button button1" style="box-shadow: 1px 1px 5px 0px #4CAF50 ; width: 100%; margin: 10px; border-radius: 8px 8px 8px 8px;">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"> </script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
-<script>
-  const firebaseConfig = {
-  apiKey: "AIzaSyCcB1RX0S6Lj_Jx8H8moPF2bfVsqaIXBVI",
-  authDomain: "tawakl-tech.firebaseapp.com",
-  databaseURL: "https://tawakl-tech.firebaseio.com",
-  projectId: "tawakl-tech",
-  storageBucket: "tawakl-tech.appspot.com",
-  messagingSenderId: "991884504870",
-  appId: "1:991884504870:web:76a977770fdc59a63cdbe7",
-  measurementId: "G-69J77HETB6"
-};
-  function onclosing(){
-      document.getElementById('alert').style.display='none';
-    }
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-const firebaseUpload = function(event) {
-    event.preventDefault();
-    var title = $("#title").val()
-    var body = $("#body").val()
-    var course_id = $('#course_id').val()
-    // const body = document.getElementById('body');
-    const form = document.getElementById('upload-form');
-    const main = document.getElementById('main');
-    // const load_div = document.getElementById('load');
-   
-    const alert = $('#alert')
-
-      if (title == '') {
-        alert.append("<div class='alert'><span class='closebtn' onclick='onclosing();'>&times;</span>  email must conatin @ symbol and  </div>")
-        return 
-      }
-      if(body == ''){
-        alert.append("<div class='alert'><span class='closebtn' onclick='onclosing();'>&times;</span>  name cannot be empty </div>")
-        return 
-      }
-      if(document.getElementById('input-file').files.length == 0){
-        alert.append("<div class='alert'><span class='closebtn' onclick='onclosing();'>&times;</span>  You must upload your CV </div>")
-        return 
-      }
-     
-    
-    main.style.visibility = "hidden";
-    // body.style.backgroundImage = 'none';
-    // load_div.style.display = 'block';
-    
-    
-    
-  let storageRef = firebase.storage().ref();
-  const file = document.getElementById('input-file').files[0];
-  let fileRef = storageRef.child(`Materials/courseID${course_id}`+file.name);
+<style type="text/css">
+  header {
   
-  fileRef.put(file).then(function(response){
-    fileRef.getDownloadURL().then(function(url){
-        const form = document.getElementById('upload-form');
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'url';
-        input.value = `${url}`;
-        form.append(input);
-        form.submit();
-    });
+  nav {
+    position: fixed;
+    z-index: 1000;
+    background: #2196F3;
+    
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      li {
+        
+        a {
+          line-height: 1;
+        }
+        
+        &:hover {
+          background: transparent;
+        }
+      }
+      
+      #menu {
+        
+      }
+      
+      #title {
+        font-size: 22px;
+        font-weight: 300;
+      }
+      
+      #more {
+        
+      }
+    }
+  }
+}
+
+main {
+  padding-top: 64px;
+  padding-bottom: 300px;
+  
+  .jumbo {
+    width: 100%;
+    height: 400px;
+    background: url(http://cine.nl/wp-content/uploads/2015/07/the-revenant-trailer.jpg) center center no-repeat;
+    background-size: cover;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    
+    .big-icon {
+      width: 180px;
+      height: 180px;
+      background: url(http://simplyleonardodicaprio.com/wp-content/uploads/leo-1.jpg) center top;
+      background-size: 140%;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-top: -90px;
+    }
+    
+    .rate {
+      width: 125px;
+      display: flex;
+      justify-content: space-between;
+      order: -1;
+      
+      .star-btn {
+        margin-top: -27.5px;
+        
+        i {
+          font-size: 26px;
+        }
+      }
+      
+      .like-btn {
+        margin-top: -27.5px;
+        
+        i {
+          font-size: 22px;
+        }
+      }
+    }
+    
+    .add {
+      width: 125px;
+      display: flex;
+      justify-content: flex-end;
+      
+      .add-btn {
+        margin-top: -27.5px;
+        
+        i {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    
+    h3 {
+      color: #212121;
+      font-size: 28px;
+      margin-top: 15px;
+    }
+    
+    p {
+      color: #727272;
+      margin-top: 0px;
+    }
+  }
+  
+  .bio {
+    margin-bottom: 80px;
+    
+    .title {
+      
+      h6 {
+        color: #212121;
+        font-size: 18px;
+      }
+    }
+    
+    .content {
+      
+      p {
+        color: #727272;
+      }
+    }
+  }
+  
+  .pics {
+    margin-bottom: 50px;
+    
+    .title {
+      margin-bottom: 20px;
+      
+      h6 {
+        color: #212121;
+        font-size: 18px;
+      }
+    }
+    
+    .row-1 {
+      
+      .s12:nth-of-type(2) {
+        margin-bottom: -10px;
+      }
+    }
+    
+    .row {
+      
+      .s12:nth-of-type(1) {
+        margin-bottom: 10px;
+      }
+      
+      .col {
+        
+        .card {
+          height: 260px;
+          
+          #first-img {
+            height: 100%;
+            background: url(http://www.wallpapers.rs/wallpapers/leonardo_dicaprio_in_movie_scene-1920x1200.jpg) center center;
+            background-size: cover;
+          }
+          
+          #second-img {
+            height: 100%;
+            background: url(http://tremendouswallpapers.com/wp-content/uploads/2014/12/django-calvin-candie-leonardo-dicaprio-gives-the-hammer-in-movie-274680.jpg) center center;
+            background-size: cover;
+          }
+          
+          #third-img {
+            height: 100%;
+            background: url(http://cdn.collider.com/wp-content/uploads/leonardo-dicaprio-wolf-of-wall-street.jpg) center center;
+            background-size: cover;
+          }
+          
+          #forth-img {
+            height: 100%;
+            background: url(http://www.aceshowbiz.com/images/still/the-great-gatsby-still09.jpg) center center;
+            background-size: cover;
+          }
+        }
+      }
+    }
+  }
+  
+  .posts {
+    margin-bottom: 50px;
+    
+    .title {
+      
+      h6 {
+        color: #212121;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    }
+    
+    .row {
+      margin-bottom: 0px;
+      
+      .col {
+        
+        .card {
+          position: relative;
+          
+          .card-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            .tags {
+              display: flex;
+              
+              .chip:first-child {
+                margin-right: 5px;
+              }
+            }
+            
+            .card-love {
+              cursor: pointer;
+              font-size: 25px;
+              position: absolute;
+              right: 10px;
+              top: 10px;
+              color: white;
+              transition: all 100ms ease-in-out;
+              
+              &:hover {
+                color: #f9a825;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .blogs {
+    margin-bottom: 80px;
+    
+    .title {
+      margin-bottom: 20px;
+      
+      h6 {
+        color: #212121;
+        font-size: 18px; 
+      }
+    }
+  }
+  
+  .likes {
+  
+    .title {
+      margin-bottom: 20px;
+      
+      h6 {
+        color: #212121;
+        font-size: 18px; 
+      }
+    }
+    
+    .row {
+
+      .col {
+
+        .tabs {
+          margin-bottom: 10px;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+      }
+    }
+  }
+  
+  .stretch {
+    height: 500px;
+  }
+  
+  .fab {
+    transition: all 120ms ease-in-out;
+    bottom: 20px !important;
+    
+    .btn-large {
+
+      i {
+        font-size: 40px;
+      }
+    }
+    
+    .orange {
+      
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  
+  main {
+    padding-top: 40px;  
+  }
+  
+  .jumbo {
+    height: 200px !important;
+  }
+  
+  .icons {
+    justify-content: center !important;
+  }
+  
+  .rate {
+    display: none !important;
+  }
+  
+  .add {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  
+  .fab {
+    display: none;
+  }
+}
+</style>
+<header>
+  <nav role='navigation'>
+      <ul>
+      <li id="menu"><a href="#"><i class="material-icons">menu</i></a></li>
+      <li id="title">Profile</li>
+      <li id="more"><a href="#"><i class="material-icons">more_vert</i></a></li>
+      </ul>
+  </nav>  
+</header>
+<main>
+  <div class="jumbo"></div>
+  <div class="container icons">
+    <div class="big-icon"></div>
+    <div class="rate">
+      <a class="star-btn add-btn btn-floating btn-large waves-effect waves-light blue darken-1"><i class="material-icons">star</i></a>
+      <a class="like-btn add-btn btn-floating btn-large waves-effect waves-light blue darken-1"><i class="material-icons">thumb_up</i></a>
+    </div>
+    <div class="add">
+      <a class="add-btn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    </div>
+  </div>
+  <div class="details">
+    <h3>Leonardo DiCaprio</h3>
+    <p>Actor / Environmentalist</p>
+  </div>
+  <div class="container bio">
+      <div class="title">
+        <h6>Biography</h6>
+      </div>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro officiis fugit hic vel voluptates perferendis aut quibusdam sit omnis unde aspernatur quae repellat blanditiis autem, a libero asperiores neque illum aliquid est tempore. Eveniet velit voluptate amet facere, repellendus aperiam, cumque est ipsam. Asperiores expedita iusto, inventore sit suscipit nihil repudiandae? Laboriosam cum maxime dolorem neque, in veniam expedita ad. Hic fugit necessitatibus blanditiis, optio dignissimos molestiae nam, numquam odio.</p>
+      </div>
+      <hr />
+  </div>
+  <div class="container pics">
+    <div class="title">
+      <h6>Pictures</h6>
+    </div>
+    <div class="row row-1">
+      <div class="col m6 s12">
+        <div class="card">
+                <div class="card-image" id="first-img">
+                    <span class="card-title">Inception</span>
+                </div>
+              </div>
+      </div>
+      <div class="col m6 s12">
+        <div class="card">
+                <div class="card-image" id="second-img">
+                    <span class="card-title">Django Unchained</span>
+                </div>
+              </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col m6 s12">
+        <div class="card">
+                <div class="card-image" id="third-img">
+                    <span class="card-title">The Wolf of Wallstreet</span>
+                </div>
+              </div>
+      </div>
+      <div class="col m6 s12">
+        <div class="card">
+                <div class="card-image" id="forth-img">
+                    <span class="card-title">The Great Gatsby</span>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+  <div class="container posts">
+    <div class="title">
+      <h6>Posts</h6>
+    </div>
+    <div class="row">
+          <div class="col s12 m6">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Story
+              </div>
+              <div class="chip">
+                Adventure
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+      <div class="col s12 m6">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Personal
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+        </div>
+    <div class="row">
+          <div class="col s12 m6">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Love
+              </div>
+              <div class="chip">
+                Fiction
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+      <div class="col s12 m6">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Story
+              </div>
+              <div class="chip">
+                Sad
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+        </div>
+    <div class="row">
+          <div class="col s12 m6">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Happy
+              </div>
+              <div class="chip">
+                Fiction
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+      <div class="col s12 m6">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Erotic
+              </div>
+              <div class="chip">
+                Fiction
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="container blogs">
+    <div class="title">
+      <h6>Blogs</h6>
+    </div>
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First blog</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora nobis, amet ipsa qui officiis modi consequatur reprehenderit expedita nihil ab recusandae, molestiae. Maiores reprehenderit mollitia nisi perferendis quisquam eos repudiandae harum ducimus, impedit et numquam tempore? Labore explicabo sit mollitia sequi doloribus perspiciatis rem corporis veniam, aspernatur autem, tempore consequuntur asperiores excepturi quas ratione natus! Nesciunt, animi! Laudantium quia, aliquam non dolorem, aliquid quod soluta sit id suscipit facilis! Omnis qui in perferendis debitis quam architecto dignissimos sequi asperiores, porro explicabo blanditiis voluptate, totam necessitatibus quia repellendus dolorum animi accusamus molestias assumenda culpa unde sapiente magnam aut fuga? A quae magnam, ipsam modi minus. Optio nihil consequuntur rem quas, eveniet temporibus at atque voluptas voluptatibus beatae animi aliquam quos natus cum magni nobis doloremque illum incidunt, tenetur, quasi sunt aperiam? Reprehenderit officiis consequuntur repellat, atque provident quam. Ut perferendis libero fugiat hic nobis, iusto at dolorum ratione, facere, ipsum saepe, aliquid officia nihil. Inventore, voluptatibus animi sunt ratione adipisci reprehenderit nostrum qui cumque eum ut! Minima suscipit ratione voluptates, et, temporibus vitae doloribus ipsa ipsam. Eligendi ducimus distinctio perferendis praesentium. Eius dolor magni perspiciatis velit, possimus unde quis ea in inventore veritatis facere dicta delectus officiis aut vero voluptatum.</p></div>
+      </li>
+      <li>
+          <div class="collapsible-header"><i class="material-icons">place</i>Second blog</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam iure ratione facilis sapiente est, repellendus nesciunt voluptatum tempore magni natus, eius, cumque voluptates illo earum libero obcaecati, deleniti ducimus similique accusamus! Autem totam ipsa minus modi sed tempora porro. Commodi iste inventore fugit reprehenderit maiores dolorem cupiditate debitis repellat, perferendis minus sed, ipsa nulla, beatae eum nobis, asperiores aut aspernatur fuga mollitia itaque. Doloremque reprehenderit earum molestias non voluptatem veniam voluptates expedita, at, eius sunt rerum perspiciatis suscipit iure perferendis. Earum, quasi beatae qui unde ullam fuga assumenda! Consectetur natus temporibus, ipsa, mollitia odit, aliquid id aliquam assumenda quidem, optio ducimus dolor quis corporis iure praesentium sunt rem facilis atque quod odio. Rerum dolores aperiam numquam rem expedita, alias officiis officia minima impedit, beatae libero debitis eligendi. Placeat consequatur non, consectetur accusantium laborum sequi. Explicabo facilis officiis culpa debitis dicta omnis illo quo natus iste, fugiat vitae magni voluptatum. Sequi, illum! Ea voluptatum at similique, sint quisquam dolorum fuga repellat perferendis animi ullam eligendi, sed sapiente placeat non ducimus modi sit tempore reprehenderit deserunt cumque molestiae quod! Ipsam pariatur dicta iusto, illum in vel optio nam aut reprehenderit quam minima dolorem, eaque dignissimos harum. Nobis porro id molestiae eaque reprehenderit voluptas optio, assumenda, nisi fuga cupiditate, minima consequatur fugit dolorum. Ipsam harum, aspernatur.</p></div>
+      </li>
+      <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third blog</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ullam asperiores illo, neque, et possimus, laudantium excepturi non sunt necessitatibus cum perferendis atque? Nihil aut adipisci non perferendis fuga voluptatem mollitia. Dicta obcaecati facilis veritatis! Sapiente omnis enim quos non alias, sit, cupiditate nesciunt perferendis rem est voluptatem blanditiis molestias dolor deserunt. Distinctio, odit. Rerum maiores, a voluptas, dolores eum veniam quod alias. Ipsum doloremque suscipit, corporis sapiente laudantium. Vel possimus eveniet error nostrum sint id, assumenda sunt quam hic, voluptatibus ipsum praesentium a odio voluptas ab eius est suscipit excepturi accusamus quo iure nemo! Vel tempora distinctio assumenda nam, ex ipsam adipisci deleniti voluptas eos unde recusandae provident nemo. Reprehenderit labore necessitatibus rem, suscipit quidem recusandae amet reiciendis pariatur!</p></div>
+      </li>
+      </ul>
+  </div>
+  <div class="container likes">
+    <div class="title">
+      <h6>Likes</h6>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+          <li class="tab col s3"><a class="active"  href="#test1">All</a></li>
+          <li class="tab col s3"><a href="#test2">Pictures</a></li>
+          <li class="tab col s3"><a href="#test3">Posts</a></li>
+          <li class="tab col s3"><a href="#test4">Blogs</a></li>
+        </ul>
+        </div>
+        <div id="test1" class="col s12">All</div>
+        <div id="test2" class="col s12">
+        <div class="row">
+          <div class="col s12 m6">
+            <img class="materialboxed responsive-img" src="http://materializecss.com/images/sample-1.jpg">
+          </div>
+          <div class="col s12 m6">
+            <img class="materialboxed responsive-img" src="http://materializecss.com/images/sample-1.jpg">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <img class="materialboxed responsive-img" src="http://materializecss.com/images/sample-1.jpg">
+          </div>
+          <div class="col s12 m6">
+            <img class="materialboxed responsive-img" src="http://materializecss.com/images/sample-1.jpg">
+          </div>
+        </div>
+      </div>
+        <div id="test3" class="col s12">
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Story
+              </div>
+              <div class="chip">
+                Adventure
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Story
+              </div>
+              <div class="chip">
+                Adventure
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Story
+              </div>
+              <div class="chip">
+                Adventure
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Post title</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aliquid nobis nesciunt nulla laudantium aspernatur, delectus sed, minus ex perspiciatis...</p>
+                </div>
+          <div class="card-action">
+            <a href="#">Read more...</a>
+            <div class="tags">
+              <div class="chip">
+                Story
+              </div>
+              <div class="chip">
+                Adventure
+              </div>
+            </div>
+            <i class="material-icons card-love">favorite_border</i>
+          </div>
+              </div>
+          </div>
+        </div>
+      </div>
+        <div id="test4" class="col s12">
+        <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First blog</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias tempora nobis, amet ipsa qui officiis modi consequatur reprehenderit expedita nihil ab recusandae, molestiae. Maiores reprehenderit mollitia nisi perferendis quisquam eos repudiandae harum ducimus, impedit et numquam tempore? Labore explicabo sit mollitia sequi doloribus perspiciatis rem corporis veniam, aspernatur autem, tempore consequuntur asperiores excepturi quas ratione natus! Nesciunt, animi! Laudantium quia, aliquam non dolorem, aliquid quod soluta sit id suscipit facilis! Omnis qui in perferendis debitis quam architecto dignissimos sequi asperiores, porro explicabo blanditiis voluptate, totam necessitatibus quia repellendus dolorum animi accusamus molestias assumenda culpa unde sapiente magnam aut fuga? A quae magnam, ipsam modi minus. Optio nihil consequuntur rem quas, eveniet temporibus at atque voluptas voluptatibus beatae animi aliquam quos natus cum magni nobis doloremque illum incidunt, tenetur, quasi sunt aperiam? Reprehenderit officiis consequuntur repellat, atque provident quam. Ut perferendis libero fugiat hic nobis, iusto at dolorum ratione, facere, ipsum saepe, aliquid officia nihil. Inventore, voluptatibus animi sunt ratione adipisci reprehenderit nostrum qui cumque eum ut! Minima suscipit ratione voluptates, et, temporibus vitae doloribus ipsa ipsam. Eligendi ducimus distinctio perferendis praesentium. Eius dolor magni perspiciatis velit, possimus unde quis ea in inventore veritatis facere dicta delectus officiis aut vero voluptatum.</p></div>
+      </li>
+      <li>
+          <div class="collapsible-header"><i class="material-icons">place</i>Second blog</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam iure ratione facilis sapiente est, repellendus nesciunt voluptatum tempore magni natus, eius, cumque voluptates illo earum libero obcaecati, deleniti ducimus similique accusamus! Autem totam ipsa minus modi sed tempora porro. Commodi iste inventore fugit reprehenderit maiores dolorem cupiditate debitis repellat, perferendis minus sed, ipsa nulla, beatae eum nobis, asperiores aut aspernatur fuga mollitia itaque. Doloremque reprehenderit earum molestias non voluptatem veniam voluptates expedita, at, eius sunt rerum perspiciatis suscipit iure perferendis. Earum, quasi beatae qui unde ullam fuga assumenda! Consectetur natus temporibus, ipsa, mollitia odit, aliquid id aliquam assumenda quidem, optio ducimus dolor quis corporis iure praesentium sunt rem facilis atque quod odio. Rerum dolores aperiam numquam rem expedita, alias officiis officia minima impedit, beatae libero debitis eligendi. Placeat consequatur non, consectetur accusantium laborum sequi. Explicabo facilis officiis culpa debitis dicta omnis illo quo natus iste, fugiat vitae magni voluptatum. Sequi, illum! Ea voluptatum at similique, sint quisquam dolorum fuga repellat perferendis animi ullam eligendi, sed sapiente placeat non ducimus modi sit tempore reprehenderit deserunt cumque molestiae quod! Ipsam pariatur dicta iusto, illum in vel optio nam aut reprehenderit quam minima dolorem, eaque dignissimos harum. Nobis porro id molestiae eaque reprehenderit voluptas optio, assumenda, nisi fuga cupiditate, minima consequatur fugit dolorum. Ipsam harum, aspernatur.</p></div>
+      </li>
+      <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third blog</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ullam asperiores illo, neque, et possimus, laudantium excepturi non sunt necessitatibus cum perferendis atque? Nihil aut adipisci non perferendis fuga voluptatem mollitia. Dicta obcaecati facilis veritatis! Sapiente omnis enim quos non alias, sit, cupiditate nesciunt perferendis rem est voluptatem blanditiis molestias dolor deserunt. Distinctio, odit. Rerum maiores, a voluptas, dolores eum veniam quod alias. Ipsum doloremque suscipit, corporis sapiente laudantium. Vel possimus eveniet error nostrum sint id, assumenda sunt quam hic, voluptatibus ipsum praesentium a odio voluptas ab eius est suscipit excepturi accusamus quo iure nemo! Vel tempora distinctio assumenda nam, ex ipsam adipisci deleniti voluptas eos unde recusandae provident nemo. Reprehenderit labore necessitatibus rem, suscipit quidem recusandae amet reiciendis pariatur!</p></div>
+      </li>
+      </ul>
+      </div>
+      </div>
+  </div>
+  <div class="fixed-action-btn fab" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large red">
+          <i class="large material-icons">arrow_drop_up</i>
+    </a>
+      <ul>
+          <li><a class="btn-floating orange"><i class="material-icons">thumb_up</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">star</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">add</i></a></li>
+    </ul>
+    </div>
+</main>
+
+<footer class="page-footer blue">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Material Profile</h5>
+                <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, voluptate.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            &copy; 2015 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">Terms</a>
+            </div>
+          </div>
+        </footer>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<script type="text/javascript">
+  (function($) {
+  
+  $(window).scroll(function() {
+    
+    $(window).scroll(function() {
+      space = $(window).innerHeight() - $('.fab').offsetTop + $('.fab').offsetHeight;
+      if(space < 200){
+        $('.fab').css('margin-bottom', '150px');
+      }
+    })
+    
   });
   
-}
+})(jQuery);
 </script>
-
-</body>
-</html>

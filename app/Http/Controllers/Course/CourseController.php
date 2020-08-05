@@ -8,9 +8,11 @@ use App\Model\Course;
 use App\Model\Teacher;
 use App\Model\CourseDetail;
 
+use Carbon\Carbon;
+
 class CourseController extends Controller
 {
-    public function course_students(Teacher $teacher, Course $course)
+    public function course_students($locale, Course $course)
     {
         $course_id = $course->id;
         $course_students = $course->students;
@@ -18,20 +20,26 @@ class CourseController extends Controller
     }
     
 
-    public function courseMaterials($id)
+    public function courseMaterials($locale, $id)
     {
         $course = Course::find($id);
-        return view('home');
-        dd($course->courseDetails()->get());
+        $course_materials=$course->courseDetails;
+
+
+        return view('Courses.course_material',compact('course_materials','id'));
     }
 
     public function addMaterial(Request $request)
     {
+        dd('a');
         $courseDetails = new CourseDetail;
         $courseDetails->course_id = $request->course_id;
         $courseDetails->title = $request->title;
         $courseDetails->body = $request->body;
         $courseDetails->file_url = $request->url;
         $courseDetails->save();
+
+       
+        return $courseDetails;
     }
 }

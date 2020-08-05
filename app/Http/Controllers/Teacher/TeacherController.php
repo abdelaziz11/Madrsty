@@ -28,25 +28,24 @@ class TeacherController extends Controller
 
     public function profile()
     {
-        $id = Auth::User()->id;
-        // get authenticated teacher data
-        $teacher = Teacher::find($id);
-        // get teacher's courses data
+        $teacher = Auth::user();
+        $teacher_subjects=$teacher->subject;
+  
         $courses = $teacher->courses()->get();
         // get total of students assigned with this teacher
         $courses_id = $teacher->courses()->select('id')->get();
-        $totalStudents = DB::table('courses_students')->select(DB::raw('COUNT(*) as totalStudents'))->whereIn('course_id',$courses_id)->get();
+        $totalStudents = DB::table('courses_students')->whereIn('course_id',$courses_id)->count();
         //---------------------------
-        return view('Teachers.profile', compact('teacher', 'courses'));
+        return view('Teachers.profile', compact('teacher', 'courses','totalStudents','teacher_subjects'));
     }
 
-    public function teacher_courses(Teacher $teacher)
+    public function teacher_courses()
     {        
-        $teacher_courses = Auth::User()->courses;
-        return view('Teachers.courses', compact('teacher', 'teacher_courses'));
+        $teacher_courses = Auth::User()->courses->all();
+        return view('Teachers.courses', compact('teacher_courses'));
     }
 
-    public function teacher_course_lectures(Teacher $teacher, Course $course)
+    public function teacher_course_lectures($locale, Course $course)
     {
         
         $now = Carbon::now();
@@ -55,11 +54,11 @@ class TeacherController extends Controller
         $course = Course::where('teacher_id', Auth::id())
         ->where('id', $course->id)->first();
         $course_lectures = $course->lectures->whereBetween('lecture_date', [$start, $end]);
-        return view('Teachers.course_lectures', compact('teacher', 'course', 'course_lectures'));
+        return view('Teachers.course_lectures', compact( 'course', 'course_lectures'));
 
     }
 
-    public function add_new_lecture(CreateLectureRequest $request, Teacher $teacher, Course $course)
+    public function add_new_lecture(CreateLectureRequest $request, Course $course)
     {
         $lecture = new Lecture();
         $lecture->name = $request->name;
@@ -71,31 +70,34 @@ class TeacherController extends Controller
         $lecture->meeting_id = $this->meeting_data->id;
         $lecture->save();
 
-        return redirect()->route('teacher.course.lectures', [$course->teacher->id, $course->id]);
+        return redirect()->route('teacher.course.lectures', [$course->id]);
     }
 
-    public function get_course_questions(Teacher $teacher, Course $course)
+    public function get_course_questions($locale, Course $course)
     {
         $course_questions = $course->questions;
-        return view('Teachers.course_questions', compact('course', 'course_questions'));
+        $teacher = Auth::id();
+        return view('Teachers.course_questions', compact('teacher', 'course', 'course_questions'));
     }
 
-    public function add_new_course(Teacher $teacher)
+    public function add_new_course($locale)
     {
+           $teacher = Auth::User();
         $teacher_courses_grades = $teacher->courses->pluck('grade_id');
         $grades = Grade::whereNotIn('id', $teacher_courses_grades)->get();
         return view('Teachers.add-course', compact('grades'));
     }
 
-    public function store_new_course(CreateCourseRequest $request, Teacher $teacher)
+    public function store_new_course(CreateCourseRequest $request)
     {
+
         $course = new Course();
         $course->name = $request->name;
         $course->teacher_id = Auth::id();
         $course->grade_id = $request->grade_id;
         $course->save();
 
-        return redirect()->route('teachers.courses', $teacher->id);
+        return redirect()->route('teachers.courses');
     }
 
 
@@ -142,6 +144,21 @@ class TeacherController extends Controller
 
         return json_decode($response->getBody());
         
+    }
+
+
+    public function show_schedule()
+    {
+      
+        $now = Carbon::now();
+        $start = date($now->startOfWeek(Carbon::SUNDAY));
+        $end = date($now->endOfWeek(Carbon::THURSDAY));
+        $course = Course::where('teacher_id', Auth::id())->select('id')->get();
+        $course_lectures = Lecture::whereIn('course_id',$course)->get();
+        dd($course_lectures);
+        return view('Teachers.course_lectures', compact( 'course', 'course_lectures'));
+
+
     }
 
 

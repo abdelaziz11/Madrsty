@@ -20,6 +20,32 @@ class CourseDetailsTableSeeder extends Seeder
         $course_details->course_id = 1;
         $course_details->save();
 
+  $course_details2 = new CourseDetail();
+        $course_details2->title = 'title two';
+        $course_details2->body = 'body two';
+        $course_details2->file_url = 'https://google.com';
+        $course_details2->course_id = 1;
+        $course_details2->save();
+  $course_details2 = new CourseDetail();
+        $course_details2->title = 'title two';
+        $course_details2->body = 'body two';
+        $course_details2->file_url = 'https://google.com';
+        $course_details2->course_id = 1;
+        $course_details2->save();
+  $course_details2 = new CourseDetail();
+        $course_details2->title = 'title two';
+        $course_details2->body = 'The life is much more interesant, when you remmenber the last time';
+        $course_details2->file_url = 'https://google.com';
+        $course_details2->course_id = 1;
+        $course_details2->save();
+  $course_details2 = new CourseDetail();
+        $course_details2->title = 'title two';
+        $course_details2->body = 'The life is much more interesant, when you remmenber the last time ';
+        $course_details2->file_url = 'https://google.com';
+        $course_details2->course_id = 1;
+        $course_details2->save();
+
+
         $course_details2 = new CourseDetail();
         $course_details2->title = 'title two';
         $course_details2->body = 'body two';

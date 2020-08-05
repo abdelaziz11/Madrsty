@@ -40,6 +40,10 @@ class Course extends Model
 
     public function courseDetails()
     {
+<<<<<<< HEAD
         return $this->hasMany(CourseDetail::class, 'course_id', 'id');
+=======
+        return $this->hasMany(CourseDetail::class, 'course_id', 'id')->orderBy('id','desc');
+>>>>>>> master
     }
 }
