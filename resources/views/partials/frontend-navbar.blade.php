@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-default sticky-top"  role="navigation" >
+<nav class="nav navbar navbar-expand-lg navbar-light navbar-default sticky-top"  role="navigation" >
 
 <div class="container" style="color: white;">
     <!-- Navbar brand -->
@@ -15,7 +15,7 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto" id="aa">
-            <li class="nav-item active ">
+            <li class="nav-item  ">
             <a class="nav-link hover-underline-animation" href="{{ route('teachers.profile') }}">Profile
                     <span class="sr-only">(current)</span>
                 </a>
@@ -51,4 +51,11 @@
 
 </div>
 </nav>
+
+<script>
+
+$(function() {
+  $('nav a[href^="' + location.pathname.split("/")[1] + '"]').addClass('active');
+});
+</script>
 

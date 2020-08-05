@@ -21,11 +21,11 @@ Course's Questions
                 <div class="col-xl-10">
                     <div class="quest">
                     
-                        <h4>{{ $question->title}}</h4>
+                        <h4 class="wow flipInX">{{ $question->title}}</h4>
 
                         <p>Asked By : <span> {{ $question->student->name }} </span>  From : <span> {{ $question->created_at->diffForHumans() }} </span>
-                            <strong>
-                                <a href="{{ route('question.answers', [$question->id]) }}" class="float-right">Show All Answers</a>
+                            <strong class="">
+                                <a href="{{ route('question.answers', [$question->id]) }}" class="float-right wow fadeIn">Show All Answers</a>
                             </strong>
                         </p>
                         <hr>
@@ -37,8 +37,8 @@ Course's Questions
                     </div>
                 </div>
                 <div class="col-xl-2">
-                    <div class="counter">
-                        <span class="d-inline-block">{{$question->answers->count()}}</span>
+                    <div class="counter wow rollIn">
+                        <span class="d-inline-block ">{{$question->answers->count()}}</span>
                     </div>
                     <strong class="d-block mt-4">ANSWERS</strong>
 

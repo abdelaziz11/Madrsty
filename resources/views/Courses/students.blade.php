@@ -13,33 +13,36 @@ teacher-students
     <div class="container">
         <div class="content">
             <table class="table table-bordered mt-5" id="a">
-                <tr>
+                <tr class="wow zoomIn">
+                  <?php $x=0.5;?>
                     <td colspan="2"  style="padding-bottom: 2rem !important;"><h1 style="font-weight: 400;">My Students</h1> <i class="fas fa-user-graduate float-right"></i></td>
                 </tr>
-                @foreach ($course_students as $student)
-                     
-                <tr>
-                  <td>
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid mx-2" width="80"> 
-                    <div class="info">
-                            <h3 style="font-weight: 100;">{{ $student->name }}</h3>
-                            <ul class="list-group" style="margin: 3px;">
-                            <li><i class="fas fa-map-marker" style=""></i>{{ $student->email }}</li>
-                            <li><i class="fas fa-mobile" style="margin-right: 3px;"></i>{{ $student->phone_number }}</li>
-                          </ul>
-                        </div>
-                        
-                      </td>
-                      <td style="text-align: center;">
-                        <!--  trigger modal -->
-                        <i class="fas fa-question-circle mt-4" data-studentid="{{ $student->id }}" data-courseid={{ $course_id }} data-toggle="modal" data-target="#centralModalSm"></i>
-                        
-                        
-                        
-                      </td>
-                    </tr>
-                    
-                  @endforeach
+                <tbody id="table-content">                     @foreach ($course_students as $student)
+
+                     <tr class="wow fadeIn" style="animation-delay: <?php echo $x?>s;">
+                       <td>
+                         <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid mx-2" width="80"> 
+                         <div class="info">
+                                 <h3 style="font-weight: 100;">{{ $student->name }}</h3>
+                                 <ul class="list-group" style="margin: 3px;">
+                                 <li><i class="fas fa-map-marker" ></i>{{ $student->email }}</li>
+                                 <li><i class="fas fa-mobile" style="margin-right: 3px;"></i>{{ $student->phone_number }}</li>
+                               </ul>
+                             </div>
+                             
+                           </td>
+                           <td style="text-align: center;">
+                             <!--  trigger modal -->
+                             <i class="fas fa-question-circle mt-4" data-studentid="{{ $student->id }}" data-courseid={{ $course_id }} data-toggle="modal" data-target="#centralModalSm"></i>
+                             
+                             
+                             
+                           </td>
+                         </tr>
+                         <?php  $x+=.25;?>
+                       @endforeach
+                </tbody>
+               
                   
                 </table>
         </div>
@@ -125,6 +128,7 @@ teacher-students
             });
         
        })
+ 
        </script>
 @endsection
 @endsection

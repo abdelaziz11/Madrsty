@@ -1,43 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teacher-students</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('/css/teacher-students.css')}}">
+@extends('layouts.front-end')
 
+@section('title')
+teacher-students
+@endsection
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</head>
-<body>
+@section('style')
+<link rel="stylesheet" href="{{asset('/css/teacher-students.css')}}">
+@endsection
 
-  
+@section('content')  
     <div class="teacher-students">
     <div class="container">
         <div class="content">
             <table class="table table-bordered mt-5" id="a">
                 <tr>
-                    <td colspan="2"  style="padding-bottom: 2rem !important;"><h1>My Students</h1> <i class="fas fa-user-graduate float-right"></i></td>
+                    <td colspan="2"  style="padding-bottom: 2rem !important;"><h1 class="wow zoomInUp">My Students</h1> <i class="fas fa-user-graduate float-right"></i></td>
                 </tr>
                 @foreach ($course_students as $student)
                      
-                <tr>
+                <tr class="wow zoomInUp">
                   <td>
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid mx-2" width="80"> 
                     <div class="info">
@@ -134,5 +116,9 @@
      <script>
        console.log('sda')
      </script>
-</body>
-</html>
+     <script>
+       $( document ).ready(function() {
+          new WOW().init();
+        });
+     </script>
+@endsection

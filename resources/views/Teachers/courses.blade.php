@@ -49,46 +49,39 @@ Course's Questions
   transform: scaleX(1);
 }
 
-
+.hvr-sweep-to-right{
+  padding: 15px 25px;
+}
 </style>
 @endsection
 
 @section('content')
-<div style="">
+<div >
  <h3 style="text-align: center;margin:50px;font-weight: 400;">My Classroom</h3>
 
 </div>
-    <div class="teacher-courses">
+    <div class="teacher-courses" >
         <div class="container">
-            <div class="row">
-                
+            <div class="row" id="row">
                 @foreach($teacher_courses as $course)
-     
+                   <div class="col-md-4 col-sm-6 col-xs-12 wow fadeInDown">
+                      <div style="text-align: center;box-shadow:0px 4px 10px -1px rgba(151, 171, 187, 0.7),0 1px 3px 0 rgba(48,56,64,.12);margin-top: 30px;background: white;">
+                            <h3 style="font-size: 1rem;font-weight: 400;line-height: 1.5; padding-top:30px " >{{ $course->name }}</h3>
 
-                   <div class="col-sm">
-     <div style="text-align: center;box-shadow:0px 4px 10px -1px rgba(151, 171, 187, 0.7),0 1px 3px 0 rgba(48,56,64,.12);margin-top: 30px;background: white;">
-          <h3 style="font-size: 1rem;font-weight: 400;line-height: 1.5;" >{{ $course->name }}</h3>
-
-                                   <ul style="text-align: left;list-style: none;width: 100%;margin-top: 30px;">
-                                                                          <hr style="margin: 0px;">
-
-                                     <li style="margin-top: 5px;">  <a class="hvr-sweep-to-right  " style="" href="{{ route('teacher.course.students', [$course->id]) }}">Students</a></li>
-  
-                                       <hr style="margin: 0px;">
-                                      <li>  <a class="hvr-sweep-to-right  " style="margin-top: 5px;" href="{{route('teacher.course.lectures' , [$course->id])}}">Lectures</a></li>
-
-                                                                              <hr style="margin: 0px;">
-
-                                                                                                        
-                                        <li><a class=" hvr-sweep-to-right " style="margin-top: 5px;" href="{{route('teacher.course.questions', [$course->id])}}">Questions</a></li>    
-                                                                               <hr style="margin: 0px;">
-                                                           
-                                       <li> <a class="hvr-sweep-to-right  " href="{{route('teachers.courseMaterials',[$course->id])}}" style="margin-top: 5px;">Course matrial</a> </li>           
-                                  </ul>
-     </div>
-
-</div>
-          @endforeach
+                            <ul style="text-align: left;list-style: none;width: 100%;margin-top: 30px;">
+                              <hr style="margin: 0px;">
+                              <li >  <a class="hvr-sweep-to-right  "  href="{{ route('teacher.course.students', [$course->id]) }}">Students</a></li>
+                                <hr style="margin: 0px;">
+                                <li>  <a class="hvr-sweep-to-right  " href="{{route('teacher.course.lectures' , [$course->id])}}">Lectures</a></li>
+                                <hr style="margin: 0px;">
+                                <li><a class=" hvr-sweep-to-right "  href="{{route('teacher.course.questions', [$course->id])}}">Questions</a></li>    
+                                <hr style="margin: 0px;">                    
+                                <li> <a class="hvr-sweep-to-right  " href="{{route('teachers.courseMaterials',[$course->id])}}" >Course matrial</a> </li>           
+                            </ul>
+                    </div>
+                  </div>
+                @endforeach
+               
                
             </div>
         </div>
@@ -98,6 +91,12 @@ Course's Questions
 
 @section('scripts')
     <script src="https://cdn.rawgit.com/nnattawat/flip/v1.1.2/dist/jquery.flip.min.js"></script>
-
+    <script>  
+      var mainDiv = document.getElementById('row').children;
+      var i;
+      for (i = 0; i < mainDiv.length; i=i+2) {
+        mainDiv[i].classList.add("fadeInUp")
+      } 
+    </script>
 @endsection   
 @endsection
