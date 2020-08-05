@@ -16,20 +16,28 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto" id="aa">
             <li class="nav-item active ">
-            <a class="nav-link hover-underline-animation" href="{{ route('teachers.profile') }}">Profile
+            <a class="nav-link hover-underline-animation" href="{{ route('teachers.profile', app()->getLocale()) }}">{{ __('site.Profile') }}
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link hover-underline-animation" href="{{ route('teachers.courses') }}">Classroom</a>
+                <a class="nav-link hover-underline-animation" href="{{ route('teachers.courses', app()->getLocale()) }}">{{ __('site.Classroom') }}</a>
             </li>
 
                <li class="nav-item">
-                <a class="nav-link hover-underline-animation" href="{{ route('teachers.schedule') }}">schedule</a>
+                <a class="nav-link hover-underline-animation" href="{{ route('teachers.schedule', app()->getLocale()) }}">{{ __('site.schedule') }}</a>
             </li>
 
-             <li class="nav-item">
-                <a class="nav-link hover-underline-animation" href="{{ route('teacher.course.create') }}">Add course</a>
+            <li class="nav-item">
+                <a class="nav-link hover-underline-animation" href="{{ route('teacher.course.create', app()->getLocale()) }}">{{ __('site.Add Course') }}</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link hover-underline-animation" href="/ar">{{ __('site.ar') }}</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link hover-underline-animation" href="/en">{{ __('site.en') }}</a>
             </li>
 
         </ul>
@@ -37,14 +45,14 @@
 
         <form class="form-inline">
             <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="{{ __('site.search') }}" aria-label="Search">
             </div>
         </form>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
         </form>
         <a href="javascript:void" onclick="$('#logout-form').submit();">
-    Logout
+    {{ __('site.logout') }}
 </a>     
     </div>
     <!-- Collapsible content -->

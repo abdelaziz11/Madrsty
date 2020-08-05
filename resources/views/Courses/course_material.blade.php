@@ -12,14 +12,14 @@ Course's Questions
 @section('content')
      
 <section style="">
-  <form style=" max-width: 900px;min-height: 200px ; margin: 30px auto 40px;" id="upload-form" method="post" action="{{ route('teachers.addMaterial') }}" >
+  <form style=" max-width: 900px;min-height: 200px ; margin: 30px auto 40px;" id="upload-form" method="post" action="{{ route('teachers.addMaterial', app()->getLocale()) }}" >
 
 
 <div class="md-form" style="min-width:900px;">
   <textarea id="body" name="body" class="md-textarea form-control" style="" rows="3"></textarea>
-  <label for="form10">Write the post here</label>
+  <label for="form10">{{ __('site.write the post here') }}</label>
 </div>
-<button class="btn btn-primary" id="add-post" type="button" style="float: right">Post</button>
+<button class="btn btn-primary" id="add-post" type="button" style="float: right">{{ __('site.post') }}</button>
 
 <input type="hidden" name="title" id="title" value="dewdwdw">
 <input type="hidden" id="course_id" name="course_id" value="{{$id}}">

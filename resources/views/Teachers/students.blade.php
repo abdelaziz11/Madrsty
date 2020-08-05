@@ -33,7 +33,7 @@
         <div class="content">
             <table class="table table-bordered mt-5" id="a">
                 <tr>
-                    <td colspan="2"  style="padding-bottom: 2rem !important;"><h1>My Students</h1> <i class="fas fa-user-graduate float-right"></i></td>
+                  <td colspan="2"  style="padding-bottom: 2rem !important;"><h1>{{ __('site.my students') }}</h1> <i class="fas fa-user-graduate float-right"></i></td>
                 </tr>
                 @foreach ($course_students as $student)
                      

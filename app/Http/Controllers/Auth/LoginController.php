@@ -40,29 +40,30 @@ class LoginController extends Controller
       return view('auth.login');
     }
 
-
-         public function login(Request $request)
+    public function login(Request $request)
     {
-            $credentials = ['email'=>$request->email,'password'=>$request->password];
+        //this function will log the user in
+        $credentials = request(['phone_number', 'password']);
 
-      if(Auth::guard('student')->attempt(['email'=>$request->email,'password'=>$request->password]))
+        if(Auth::guard('student')->attempt($credentials))
         {
             return redirect()->route('students.home');
         }
-        else if (Auth::guard('teacher')->attempt(['email'=>$request->email,'password'=>$request->password]))
+        else if (Auth::guard('teacher')->attempt($credentials))
         {
             return redirect()->route('teachers.home');
         }
+
         else
         {
-            dd('error');
             return back()->withErrors(['email'=>'Invalid Attempt! Check Credentials']);
         }
 
+    }
 
-    }  
+      
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware(['guest:student', 'guest:teacher', 'guest'])->only(['showLoginForm', 'login']);
     }
 }

@@ -45,7 +45,7 @@ class TeacherController extends Controller
         return view('Teachers.courses', compact('teacher_courses'));
     }
 
-    public function teacher_course_lectures(Course $course)
+    public function teacher_course_lectures($locale, Course $course)
     {
         
         $now = Carbon::now();
@@ -73,14 +73,14 @@ class TeacherController extends Controller
         return redirect()->route('teacher.course.lectures', [$course->id]);
     }
 
-    public function get_course_questions( Course $course)
+    public function get_course_questions($locale, Course $course)
     {
         $course_questions = $course->questions;
         $teacher = Auth::id();
         return view('Teachers.course_questions', compact('teacher', 'course', 'course_questions'));
     }
 
-    public function add_new_course()
+    public function add_new_course($locale)
     {
            $teacher = Auth::User();
         $teacher_courses_grades = $teacher->courses->pluck('grade_id');
