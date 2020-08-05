@@ -62,7 +62,12 @@ Balance
                         <h5>Description </h5>
                         <p class="text_label">There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</p>
                         <i class="far fa-edit float-right edit" style="margin-top: -40px;"></i>
-                        <input type="text" value="" />
+                        <div class="edit-content" style="display: none;">
+                            <textarea name="" id="" style="width: 90%" rows="10">There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</textarea>
+                            <button type="button" class="btn btn-primary">save</button>
+                            <button type="button" class="btn btn-danger">cancel</button>
+                        </div>
+
                         <hr>
                         <h5>Languages</h5>
                         <p>English  - Arabic</p>
@@ -273,42 +278,17 @@ Balance
 
 
 
-
         $('.edit').click(function(){
 		$(this).hide();
 		$(this).prev().hide();
 		$(this).next().show();
-		$(this).next().select();
 	});
-
-	$('input[type="text"]').blur(function() {
-         if ($.trim(this.value) == ''){
-			 this.value = (this.defaultValue ? this.defaultValue : '');
-		 }
-		 else{
-			 $(this).prev().prev().html(this.value);
-		 }
-
-		 $(this).hide();
-		 $(this).prev().show();
-		 $(this).prev().prev().show();
-          });
-
-	  $('input[type="text"]').keypress(function(event) {
-		  if (event.keyCode == '13') {
-			  if ($.trim(this.value) == ''){
-				 this.value = (this.defaultValue ? this.defaultValue : '');
-			 }
-			 else
-			 {
-				 $(this).prev().prev().html(this.value);
-			 }
-
-			 $(this).hide();
-			 $(this).prev().show();
-			 $(this).prev().prev().show();
-		  }
-	  });
+      
+      $('.btn-danger').click(function(){
+        $(this).parent().hide();
+        $('.text_label').css({'display': 'block'});
+        $('.edit').show();
+      });
 </script>
 @endsection
 
