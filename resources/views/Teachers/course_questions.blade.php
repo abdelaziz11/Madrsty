@@ -23,16 +23,16 @@ Course's Questions
                     
                         <h4 class="wow flipInX">{{ $question->title}}</h4>
 
-                        <p>Asked By : <span> {{ $question->student->name }} </span>  From : <span> {{ $question->created_at->diffForHumans() }} </span>
+                        <p>{{ __('site.asked by') }} : <span> {{ $question->student->name }} </span>  {{ __('site.from') }} : <span> {{ $question->created_at->diffForHumans() }} </span>
                             <strong class="">
-                                <a href="{{ route('question.answers', [$question->id]) }}" class="float-right wow fadeIn">Show All Answers</a>
+                                <a href="{{ route('question.answers', [app()->getLocale(), $question->id]) }}" class="float-right wow fadeIn">{{ __('site.show all answers') }}</a>
                             </strong>
                         </p>
                         <hr>
                         @if($question->get_first_answer())
                         <p>{{ $question->get_first_answer() }}</p>
                         @else
-                        <strong style="color:red">No Answers Provided Yet!</strong>
+                        <strong style="color:red">{{ __('site.no answers provided yet!') }}</strong>
                         @endif
                     </div>
                 </div>
@@ -40,7 +40,7 @@ Course's Questions
                     <div class="counter wow rollIn">
                         <span class="d-inline-block ">{{$question->answers->count()}}</span>
                     </div>
-                    <strong class="d-block mt-4">ANSWERS</strong>
+                    <strong class="d-block mt-4">{{ __('site.answers') }}</strong>
 
                 </div>
             @endforeach

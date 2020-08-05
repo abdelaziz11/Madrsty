@@ -15,7 +15,7 @@ teacher-students
             <table class="table table-bordered mt-5" id="a">
                 <tr class="wow zoomIn">
                   <?php $x=0.5;?>
-                    <td colspan="2"  style="padding-bottom: 2rem !important;"><h1 style="font-weight: 400;">My Students</h1> <i class="fas fa-user-graduate float-right"></i></td>
+                    <td colspan="2"  style="padding-bottom: 2rem !important;"><h1 style="font-weight: 400;">{{ __('site.my students') }}</h1> <i class="fas fa-user-graduate float-right"></i></td>
                 </tr>
                 <tbody id="table-content">                     @foreach ($course_students as $student)
 
@@ -74,7 +74,7 @@ teacher-students
                 <div class="card-header" role="tab" id="headingOne1">
                     <div data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
                     aria-controls="collapseOne1">
-                    No Questions fot this student
+                    {{ __('site.no questions for this student') }}
                     </div>
                 </div>
             
@@ -86,9 +86,9 @@ teacher-students
             <!-- Accordion wrapper -->
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
-        </div>
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">{{ __('site.close') }}</button>
+          <button type="button" class="btn btn-primary btn-sm">{{ __('site.save changes') }}</button>
+          </div>
     </div>
     </div>
 </div>

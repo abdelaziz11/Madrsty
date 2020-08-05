@@ -70,13 +70,13 @@ Course's Questions
 
                             <ul style="text-align: left;list-style: none;width: 100%;margin-top: 30px;">
                               <hr style="margin: 0px;">
-                              <li >  <a class="hvr-sweep-to-right  "  href="{{ route('teacher.course.students', [$course->id]) }}">Students</a></li>
+                              <li >  <a class="hvr-sweep-to-right  "  href="{{ route('teacher.course.students', [app()->getLocale(), $course->id]) }}">{{ __('site.students') }}</a></li>
                                 <hr style="margin: 0px;">
-                                <li>  <a class="hvr-sweep-to-right  " href="{{route('teacher.course.lectures' , [$course->id])}}">Lectures</a></li>
+                                <li>  <a class="hvr-sweep-to-right  " href="{{route('teacher.course.lectures' , [app()->getLocale(), $course->id])}}">{{ __('site.lectures') }}</a></li>
                                 <hr style="margin: 0px;">
-                                <li><a class=" hvr-sweep-to-right "  href="{{route('teacher.course.questions', [$course->id])}}">Questions</a></li>    
+                                <li><a class=" hvr-sweep-to-right "  href="{{route('teacher.course.questions', [app()->getLocale(), $course->id])}}">{{ __('site.questions') }}</a></li>    
                                 <hr style="margin: 0px;">                    
-                                <li> <a class="hvr-sweep-to-right  " href="{{route('teachers.courseMaterials',[$course->id])}}" >Course matrial</a> </li>           
+                                <li> <a class="hvr-sweep-to-right  " href="{{route('teachers.courseMaterials',[app()->getLocale(), $course->id])}}" style="margin-top: 5px;">{{ __('site.course materials') }}</a> </li>           
                             </ul>
                     </div>
                   </div>

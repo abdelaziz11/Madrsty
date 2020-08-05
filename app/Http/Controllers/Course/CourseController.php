@@ -12,7 +12,7 @@ use Carbon\Carbon;
 
 class CourseController extends Controller
 {
-    public function course_students( Course $course)
+    public function course_students($locale, Course $course)
     {
         $course_id = $course->id;
         $course_students = $course->students;
@@ -20,7 +20,7 @@ class CourseController extends Controller
     }
     
 
-    public function courseMaterials($id)
+    public function courseMaterials($locale, $id)
     {
         $course = Course::find($id);
         $course_materials=$course->courseDetails;

@@ -45,17 +45,17 @@ Course's Questions
                        <table style="margin-right: 10px;">
                             <tr>
                                 <td><i class="fas fa-map-marker"></i></td>
-                                <td>subject</td>
+                                <td>{{ __('site.subject') }}</td>
                                 <td>{{$teacher_subjects->name}}</td>
                             </tr>
                              <tr>
                                 <td><i class="fas fa-clock"></i></td>
-                                <td>Total students</td>
+                                <td>{{ __('site.total students') }}</td>
                                 <td>{{$totalStudents}}</td>
                             </tr>
                             <tr>
                                 <td><i class="fas fa-user"></i></td>
-                                <td>Member since</td>
+                            <td>{{ __('site.member since') }}</td>
                                 <td>{{$teacher->created_at}}</td>
                             </tr>
                            
@@ -63,28 +63,23 @@ Course's Questions
                         </table>
                     </div>
                     <div class="more-info">
-                        <h5>Description</h5>
-                        <p>There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</p>
+                        <h5>{{ __('site.description') }}</h5>
+                        <p></p>
                         <hr>
-                        <h5>Languages</h5>
-                        <p>English  - Arabic</p>
+                        <h5>{{ __('site.languages') }}</h5>
+                        <p>{{ __('site.english') }}  - {{ __('site.arabic') }}</p>
                         <hr>
-                        <h5>Linked Accounts</h5>
+                        <h5>{{ __('site.linked accounts') }}</h5>
                         <p><i class="fab fa-twitter"></i> twitter</p>
                         <hr>
-                        <h5>Skills</h5>
-                        <button class="btn btn-outline-blue-grey">my skills</button>
-                        <button class="btn btn-outline-blue-grey">my skills</button>
-                        <button class="btn btn-outline-blue-grey">my skills</button>
-                        <button class="btn btn-outline-blue-grey">my skills</button>
-                        <button class="btn btn-outline-blue-grey">my skills</button>
-                        <button class="btn btn-outline-blue-grey">my skills</button>
+                        <h5>{{ __('site.skills') }}</h5>
+                        <button class="btn btn-outline-blue-grey">{{ __('site.skills') }}</button>
                         
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7 xs-12">
                    <div class="courses">
-                    <h1>MY COURSES</h1>
+                    <h1>{{ __('site.my courses') }}</h1>
                     <div class="mdb-lightbox">
                         <div class="row">
                         @foreach($courses as $course)    
