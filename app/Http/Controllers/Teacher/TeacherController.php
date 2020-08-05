@@ -63,6 +63,8 @@ class TeacherController extends Controller
         $lecture = new Lecture();
         $lecture->name = $request->name;
         $lecture->lecture_date = $request->lecture_date;
+        $lecture->day = Carbon::parse($lecture->lecture_date)->format('l');
+        $lecture->time = Carbon::parse($lecture->lecture_date)->format('H:i');
         $lecture->course_id = $course->id;
         $this->meeting_data = $this->create_meeting();
         $lecture->meeting_name = $this->meeting_data->topic;
@@ -149,17 +151,23 @@ class TeacherController extends Controller
 
     public function show_schedule()
     {
-      
+        return view('Teachers.schedule');
+        // return view('Teachers.course_lectures', compact( 'course', 'course_lectures'));
+
+
+    }
+
+    public function get_schedule()
+    {
         $now = Carbon::now();
         $start = date($now->startOfWeek(Carbon::SUNDAY));
         $end = date($now->endOfWeek(Carbon::THURSDAY));
         $course = Course::where('teacher_id', Auth::id())->select('id')->get();
         $course_lectures = Lecture::whereIn('course_id',$course)->get();
-        dd($course_lectures);
-        return view('Teachers.course_lectures', compact( 'course', 'course_lectures'));
-
-
+        return response()->json($course_lectures);
     }
+
+
 
 
     
