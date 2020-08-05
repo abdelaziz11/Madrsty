@@ -31,7 +31,7 @@
 
 
 
-<body style="">
+<body >
 
     <!--==========================================================-->
     <!------------------------start navbar-------------------------->
@@ -69,7 +69,7 @@
     @yield('scripts')
 <script type="text/javascript">
     $( document ).ready(function() {
-        
+        new WOW().init();
         setTimeout(function() { 
        $('#nav').show()
        $('#loading').hide()

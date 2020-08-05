@@ -7,16 +7,17 @@ Course's Questions
 @section('style')
 <link rel="stylesheet" href="{{asset('/css/course-material.css')}}">
 
+
 @endsection
 
 @section('content')
      
-<section style="">
-  <form style=" max-width: 900px;min-height: 200px ; margin: 30px auto 40px;" id="upload-form" method="post" action="{{ route('teachers.addMaterial') }}" >
+<section>
+  <form  id ="form"style=" max-width: 900px;min-height: 200px ; margin: 30px auto 40px;" id="upload-form" method="post" action="{{ route('teachers.addMaterial') }}" >
 
 
-<div class="md-form" style="min-width:900px;">
-  <textarea id="body" name="body" class="md-textarea form-control" style="" rows="3"></textarea>
+<div class="md-form" style="min-width:900px;" >
+  <textarea id="body" name="body" class="md-textarea form-control"  rows="3"></textarea>
   <label for="form10">Write the post here</label>
 </div>
 <button class="btn btn-primary" id="add-post" type="button" style="float: right">Post</button>
@@ -41,9 +42,11 @@ Course's Questions
 </div>  
 
   <div class="container" id="main"  >
+  <?php $x=0.5;?>
+
     @foreach($course_materials as $course)
-    <div class="box image" style="  box-shadow:0px 4px 10px -1px rgba(151, 171, 187, 0.7);
-">
+
+    <div  class="box image wow  slideInUp" style=" box-shadow:0px 4px 10px -1px rgba(151, 171, 187, 0.7);">
       <div class="box-header">
         <h3><a href=""><img src="" alt="M" />Me</a>
           <span style="margin-top: 5px;">{{$course->created_at}} <i class="fa fa-globe"></i></span>
@@ -66,6 +69,8 @@ Course's Questions
      
        
     </div>
+    <?php  $x+=.5;?>
+
     @endforeach
    
   </div>
@@ -75,13 +80,6 @@ Course's Questions
 <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"> </script>
 
-<script>
-
-  function onclosing(){
-      document.getElementById('alert').style.display='none';
-    }
-
-</script>
 
 <script type="text/javascript">
   $( document ).ready(function() {
@@ -108,11 +106,14 @@ $('#add-post').click(function()
     const main = $('#main');
     // const load_div = document.getElementById('load');
        const loading = $('#loading');
+       const form=$('#form')
 
    
     
     main.hide();
+    form.hide();
         loading.show();
+
 
       // body.style.backgroundImage = 'none';
     // load_div.style.display = 'block';
@@ -141,6 +142,7 @@ let fileRef = storageRef.child(`Materials/courseID${course_id}`+file.name);
            main.prepend(new_post);
             loading.hide();
             main.show();
+            form.show();
 
 
            
