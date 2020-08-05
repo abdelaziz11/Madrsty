@@ -56,6 +56,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
 
     // teacher add new material to his course
     Route::post('/addMaterial', 'Course\CourseController@addMaterial')->name('teachers.addMaterial');
+    
+    Route::post('/joinMeeting', 'Teacher\TeacherController@joinMeeting');
 
     //routing to method show students assigned to current course
     Route::get('/courseStudents/{id}', 'Course\CourseController@courseStudents')->name('teachers.courseStudents');
@@ -66,7 +68,10 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     //routing to method show student's questions and answers on current course only
     Route::get('/studentQuestions/{course_id}/{student_id}', 'Student\StudentController@studentQuestions')->name('teachers.studentQuestions');
 
-});
+    Route::get('/live/{meeting_id}/{meeting_password}', function ($meeting_id,$meeting_password) {
+        return view('zoom.meeting',compact('meeting_id','meeting_password'));
+    })->name('zoom');
+    });
 
 Route::group(['prefix' => 'student'], function () {
     Route::get('/home', 'Student\StudentController@home')->name('students.home');

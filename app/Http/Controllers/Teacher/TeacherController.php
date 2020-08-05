@@ -167,6 +167,13 @@ class TeacherController extends Controller
         return response()->json($course_lectures);
     }
 
+    public function joinMeeting(Request $request)
+    {
+        $lecture_id = $request->id;
+        $lecture = Lecture::find($lecture_id);
+        
+        return route('zoom', ['meeting_id' => $lecture->meeting_id,'meeting_password' => $lecture->meeting_password]);
+    }
 
 
 

@@ -17,6 +17,7 @@
     <h1 class="text-xl">Schedule Template</h1>
   </header>
 
+  <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
   <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
     <div class="cd-schedule__timeline">
       <ul>
@@ -43,12 +44,14 @@
   
     <div class="cd-schedule__events" onclick="">
         
-      <ul>
+      <ul id="a">
 
         <li class="cd-schedule__group">
           <div class="cd-schedule__top-info"><span>Sunday</span></div>
   
           <ul id="Sunday">
+            
+            
           </ul>
         </li>
   
@@ -125,23 +128,21 @@
                 console.log(`${hour}:${minute}`);
                 switch (element.day) {
                     case "Sunday":
-                        $('#Sunday').append("<li class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>Arabic grade 1</em></a></li>");
+                        $('#Sunday').append("<li data-id='"+element.id+"'  class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>"+element.name+"</em></a></li>");
                         break;
                     case "Monday":
-                        $('#Monday').append("<li class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>Arabic grade 1</em></a></li>");
+                        $('#Monday').append("<li data-id='"+element.id+"'  class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>"+element.name+"</em></a></li>");
                         break;
                     case "Tuesday":
-                        $('#Tuesday').append("<li class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>Arabic grade 1</em></a></li>");
+                        $('#Tuesday').append("<li data-id='"+element.id+"' class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>"+element.name+"</em></a></li>");
                         break;
                     case "Wednesday":
-                        $('#Wednesday').append("<li class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>Arabic grade 1</em></a></li>");
+                        $('#Wednesday').append("<li data-id='"+element.id+"' class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>"+element.name+"</em></a></li>");
                         break;
                     case "Thursday":
-                        $('#Thursday').append("<li class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>Arabic grade 1</em></a></li>");
+                        $('#Thursday').append("<li data-id='"+element.id+"' class='cd-schedule__event' data-content='1'><a data-start='"+hour+":"+minute+"' data-end='"+end+":"+minute+"' data-content='event-abs-circuit' data-event='event-1' href='#0'><em class='cd-schedule__name'>"+element.name+"</em></a></li>");
                         break;
                 }
-
-
             });
             console.log("in mine")
             loadScript('/js/util.js')
@@ -156,6 +157,31 @@
             script.async = false;
             document.body.append(script);
         }
+
+        $('#a').on('click','li ul li',function() {
+
+  
+
+          console.log($(this).attr('data-id') )
+
+          $.ajax({
+      url: "/teacher/joinMeeting",
+      type: "POST",
+      data: {"_token": $('#token').val(),"id":$(this).attr('data-id') },
+      success: function (response) {
+           console.log(response);
+          window.location.replace(response)
+          
+           
+         },
+         error: function (response) {
+           console.log(response);
+         }
+  });
+
+
+        });
+
 </script>
 
 
