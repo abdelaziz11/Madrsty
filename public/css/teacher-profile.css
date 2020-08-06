@@ -123,13 +123,14 @@
 
 
 .teacher-profile .container{
-    max-width: 1400px !important;
+    max-width: 1700px !important;
 }
 /****************************************************
                     start sidebar
 ****************************************************/
 
         /************main-info**********/
+
 .teacher-profile .main-info ,main .more-info{
     text-align: center;
     border: 1px solid #dddddd;
@@ -177,7 +178,20 @@
     float: right;
 }
 
+.teacher-profile .main-info table{
+  display: inline;
+}
+.teacher-profile .main-info {
+  border-radius: 15px;
 
+  background: rgb(255,146,91);
+  background: linear-gradient(90deg, rgba(255,146,91,1) 0%, rgba(255,116,120,1) 35%, rgba(255,84,149,1) 100%);
+}
+.teacher-profile .main-info .balance{
+  border-radius: 15px;
+  background-color: #ffff;
+  padding: 20px;
+}
         /************more-info**********/
 
 
@@ -203,22 +217,39 @@ text-align: left;
 /****************************************************
                     start courses
 ****************************************************/
-.teacher-profile .col-lg-8{
-    margin-top: 250px;
+.teacher-profile .col-lg-7{
+    margin-top: 50px;
 }
-.teacher-profile .col-lg-8 .courses{
+.teacher-profile .col-lg-7 .courses{
     text-align: center;
 }
-.teacher-profile .col-lg-8 .courses h1{
+.teacher-profile .col-lg-7 .courses h1{
     margin-bottom: 100px;
 }
-.teacher-profile .col-lg-8 .view{
-    box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
+.teacher-profile .courses .row .content{
+  padding: 20px;
+  border: 1px solid #dddddd;
 }
-.teacher-profile .col-lg-8 .img-fluid {
-    -webkit-box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
-    -moz-box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
-    box-shadow: 0px 1px 5px 4px rgba(0,0,0,0.63) !important;
+.teacher-profile .courses .row .content .CourseName{
+  position: absolute;
+  top: -13px;
+  left: 35px;
+  background-color: #fff;
+}
+.teacher-profile .courses .row .content {
+  padding: 50px 50px 30px 20px ;
+  
+}
+.teacher-profile .courses .row .content .counter .row .col-sm .count{
+  border-radius: 50%;
+  background-color: rgb(65, 168, 65);
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+  margin: 0 auto;
+}
+.teacher-profile .courses .row .content .counter .row .col-sm h6,.teacher-profile .courses .row .content .counter .row .col-sm h5{
+  margin-top: 40px;
 }
 /****************************************************
                     end courses

@@ -29,9 +29,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function () {
     
     Route::get('/schedule','Teacher\TeacherController@show_schedule')->name('teachers.schedule');
-    Route::get('/get_schedule','Teacher\TeacherController@get_schedule');
+
+    
 
     Route::get('/home', 'Teacher\TeacherController@profile')->name('teachers.home');
+    Route::get('/balance', function(){
+        return view('Teachers.balance');
+    });
+
 
     Route::get('/courses', 'Teacher\TeacherController@teacher_courses')->name('teachers.courses');
 
