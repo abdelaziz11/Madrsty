@@ -15,8 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Lectures\CreateLectureRequest;
-
-
+use App\Model\Subject;
 
 class TeacherController extends Controller
 {
@@ -29,14 +28,16 @@ class TeacherController extends Controller
     public function profile()
     {
         $teacher = Auth::user();
-        $teacher_subjects=$teacher->subject;
-  
+        $subject_name = Subject::where('id',$teacher->subject_id)->select('name')->first();
+        
         $courses = $teacher->courses()->get();
+        
         // get total of students assigned with this teacher
         $courses_id = $teacher->courses()->select('id')->get();
         $totalStudents = DB::table('courses_students')->whereIn('course_id',$courses_id)->count();
+        $joiningDate = Carbon::parse($teacher->created_at)->format('d/m/Y'); 
         //---------------------------
-        return view('Teachers.profile', compact('teacher', 'courses','totalStudents','teacher_subjects'));
+        return view('Teachers.balance', compact('teacher', 'joiningDate','subject_name' ,'courses','totalStudents'));
     }
 
     public function teacher_courses()
@@ -175,7 +176,21 @@ class TeacherController extends Controller
         return route('zoom', ['meeting_id' => $lecture->meeting_id,'meeting_password' => $lecture->meeting_password]);
     }
 
+    public function editDescription(Request $request)
+    {
+        $teacher = Teacher::find(Auth::User()->id);
+        $teacher->description = $request->description;
+        $teacher->save();
+        return response()->json($teacher->description);
+    }
 
+    public function changePhoto(Request $request)
+    {
+        $teacher = Teacher::find(Auth::User()->id);
+        $teacher->photo = $request->photo;
+        $teacher->save();
+        return response()->json($teacher->photo);
+    }
 
     
 

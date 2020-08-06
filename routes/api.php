@@ -20,5 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/studentQuestions/{course_id}/{student_id}', 'Student\StudentController@studentQuestions');
 Route::get('/questionAnswers/{question_id}', 'Student\StudentController@questionAnswers');
 
+Route::post('/editDescription', 'Course\CourseController@editDescription');
+
 
 

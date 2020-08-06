@@ -42,5 +42,15 @@ class CourseController extends Controller
         return $courseDetails;
     }
 
+    public function editDescription(Request $request)
+    {
+        $teacher = Teacher::find($request->id);
+        $teacher->description = $request->description;
+        $teacher->save();
+        return response()->json($teacher->description);
+    }
+
+    
+
     
 }

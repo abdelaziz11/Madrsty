@@ -32,10 +32,10 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
 
     
 
-    Route::get('/home', 'Teacher\TeacherController@profile')->name('teachers.home');
-    Route::get('/balance', function(){
-        return view('Teachers.balance');
-    });
+    Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.home');
+    // Route::get('/balance', function(){
+    //     return view('Teachers.balance');
+    // });
 
 
     Route::get('/courses', 'Teacher\TeacherController@teacher_courses')->name('teachers.courses');
@@ -59,10 +59,16 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     //routing to profile method in TaacherController to get teacher data and his own courses
     Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');
 
+    Route::get('/get_schedule', 'Teacher\TeacherController@get_schedule');
+
     // teacher add new material to his course
     Route::post('/addMaterial', 'Course\CourseController@addMaterial')->name('teachers.addMaterial');
     
     Route::post('/joinMeeting', 'Teacher\TeacherController@joinMeeting');
+
+    Route::post('/editDescription', 'Teacher\TeacherController@editDescription');
+
+    Route::post('/changePhoto', 'Teacher\TeacherController@changePhoto');
 
     //routing to method show students assigned to current course
     Route::get('/courseStudents/{id}', 'Course\CourseController@courseStudents')->name('teachers.courseStudents');

@@ -19,31 +19,32 @@ Balance
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 xs-12">
-                    <div class="main-info" style="  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding:0;">
+                    <div class="main-info" style="  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding:0;position: relative;">
 
-                        <img  src="{{asset('/images/profile-img.webp')}}" alt="" width="30%" style="margin:65px 0 0 14px" >
-                        
-                       <table class="float-right" style="padding:50px 20px">
+                        <img id="photo" src="{{ $teacher->photo }}" alt="Choose Photo...." width="30%" style="margin:65px 0 0 14px" >
+                        <input type="file" style="position: absolute; top:0px" id="file">
+                        <button style="position: absolute; top:30px" id="edit">Change/Add Photo</button>
+                        <table class="float-right" style="padding:50px 20px">
                             <thead>
                                 <tr>
-                                    <td colspan="3" style="text-align: center;"><h4 style="font-weight: bold;">teacher name</h4></td>
+                                    <td colspan="3" style="text-align: center;"><h4 style="font-weight: bold;">{{ $teacher->name }}</h4></td>
                                 </tr>
                              </thead>
                             <tbody>
                             <tr>
                                 <td><i class="fas fa-map-marker"></i></td>
                                 <td>subject</td>
-                                <td>arabic</td>
+                                <td>{{ $subject_name->name }}</td>
                             </tr>
                              <tr>
                                 <td><i class="fas fa-clock"></i></td>
                                 <td>Total students</td>
-                                <td>15</td>
+                                <td>{{ $totalStudents }}</td>
                             </tr>
                             <tr>
                                 <td><i class="fas fa-user"></i></td>
                                 <td>Member since</td>
-                                <td>12/5/2020</td>
+                                <td>{{$joiningDate}}</td>
                             </tr>
                             </tbody>
                            
@@ -60,11 +61,11 @@ Balance
                     </div>
                     <div class="more-info" style="  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
                         <h5>Description </h5>
-                        <p class="text_label">There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</p>
+                        <p class="text_label" id="desc"> {{ $teacher->description }} </p>
                         <i class="far fa-edit float-right edit" style="margin-top: -40px;"></i>
                         <div class="edit-content" style="display: none;">
-                            <textarea name="" id="" style="width: 90%" rows="10">There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</textarea>
-                            <button type="button" class="btn btn-primary">save</button>
+                            <textarea name="" id="newDesc" style="width: 90%" rows="10">There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</textarea>
+                            <button type="button" class="btn btn-primary" id="editDesc">save</button>
                             <button type="button" class="btn btn-danger">cancel</button>
                         </div>
 
@@ -227,6 +228,7 @@ Balance
                             </div>
                             
                            
+                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             
 
                         </div>
@@ -238,7 +240,22 @@ Balance
     <!--==========================================================-->
     <!------------------------end sidebar--------------------------->
     <!--==========================================================-->
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"> </script>
+
     <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyCZhsVx8yozG3smh-ojl5f3A_hkh99YccE",
+    authDomain: "laravel-firbase-e5551.firebaseapp.com",
+    databaseURL: "https://laravel-firbase-e5551.firebaseio.com",
+    projectId: "laravel-firbase-e5551",
+    storageBucket: "laravel-firbase-e5551.appspot.com",
+    messagingSenderId: "439155288540",
+    appId: "1:439155288540:web:212c3ed06a8fc2ec858719",
+    measurementId: "G-1BV1XNS8EP"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
    //counter
     //-- Plugin implementation
     (function($) {
@@ -274,10 +291,6 @@ Balance
         //-- Executing
         $('.number-counter').countTo();
 
-
-
-
-
         $('.edit').click(function(){
 		$(this).hide();
 		$(this).prev().hide();
@@ -285,10 +298,73 @@ Balance
 	});
       
       $('.btn-danger').click(function(){
+          console.log($(this))
+          console.log($('.btn-danger'))
         $(this).parent().hide();
         $('.text_label').css({'display': 'block'});
         $('.edit').show();
       });
+
+      $('#editDesc').click(function(){
+        $.ajax({
+        url: "/teacher/editDescription",
+        type: "POST",
+        data: {"_token": $('#token').val(),"description":$('#newDesc').val() },
+        success: function (response) {
+            console.log(response);
+            $('.btn-danger').parent().hide();
+            $('.text_label').css({'display': 'block'});
+            $('.edit').show();
+            $('#desc').text(response)
+           
+        },
+        error: function (response) {
+            console.log(response);
+        }
+        });
+
+        
+      })
+        $('#edit').click(function(){
+            let storageRef = firebase.storage().ref();
+            if(document.getElementById('file').files.length==0){
+                alert("Please Choose Photo Firstly")
+                return
+            }
+            const file = document.getElementById('file').files[0];
+
+            let fileRef = storageRef.child('profile_pictures/'+file.name);
+            
+            fileRef.put(file).then(function(response){
+                fileRef.getDownloadURL().then(function(url){
+                console.log(url)
+                $.ajax({
+                url: "/teacher/changePhoto",
+                type: "POST",
+                data: {"_token": $('#token').val(),"photo":url },
+                success: function (response) {
+                    console.log(response);
+                    $('#photo').attr("src",url);
+                
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+                });
+        });
+    });
+        })
+
+        
+ 
+
+  
+  
+  
+
+  // Your web app's Firebase configuration
+  
 </script>
+
 @endsection
 
