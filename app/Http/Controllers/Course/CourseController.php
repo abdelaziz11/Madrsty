@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Course;
 use App\Model\Teacher;
 use App\Model\CourseDetail;
+use Illuminate\Support\Facades\Auth;
 
 use Carbon\Carbon;
 
@@ -22,11 +23,13 @@ class CourseController extends Controller
 
     public function courseMaterials($id)
     {
+        $teacher_photo=Auth::User()->photo;
+
         $course = Course::find($id);
         $course_materials=$course->courseDetails;
 
 
-        return view('Courses.course_material',compact('course_materials','id'));
+        return view('Courses.course_material',compact('course_materials','id','teacher_photo'));
     }
 
     public function addMaterial(Request $request)

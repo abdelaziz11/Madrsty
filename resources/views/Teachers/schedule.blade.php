@@ -1,24 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+ @extends('layouts.front-end')
+
+@section('title')
+Weekly Schedule
+@endsection
+
+
+@section('content')
+
   <script>document.getElementsByTagName("html")[0].className += " js";</script>
   <link rel="stylesheet" href="{{ asset('css/style2.css')  }}">
-  <title>Schedule Template | CodyHouse</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</head>
-<body>
- 
-  <header class="cd-main-header text-center flex flex-column flex-center">
-    <p class="margin-top-md margin-bottom-xl">👈 <a class="cd-article-link" href="https://codyhouse.co/gem/schedule-template">Article &amp; Download</a></p>
-
-    <h1 class="text-xl">Schedule Template</h1>
-  </header>
 
   <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
   <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+
     <div class="cd-schedule__timeline">
       <ul>
         <li><span>06:00</span></li>
@@ -42,7 +37,7 @@
       </ul>
     </div> <!-- .cd-schedule__timeline -->
   
-    <div class="cd-schedule__events" onclick="">
+    <div class="cd-schedule__events" onclick="" style="">
         
       <ul id="a">
 
@@ -191,7 +186,4 @@
  --}}
 
 
-
-
-</body>
-</html>
+@endsection

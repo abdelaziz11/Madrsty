@@ -21,7 +21,7 @@ Route::get('/login', 'Auth\LoginController@show')->name('login')->middleware('gu
 
 
 // Register & Login User
-Route::post('/login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
 
     
 
-    Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.home');
+    Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');
     // Route::get('/balance', function(){
     //     return view('Teachers.balance');
     // });

@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             case 'teacher':
                 if(Auth::guard('teacher')->check())
                 {
-                    return redirect()->route('teachers.home');
+                    return redirect()->route('teachers.profile');
                 }
             break;
 

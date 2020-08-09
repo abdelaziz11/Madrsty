@@ -27,15 +27,16 @@ class TeacherController extends Controller
 
     public function profile()
     {
-        $teacher = Auth::user();
+        $teacher = Auth::User();
         $subject_name = Subject::where('id',$teacher->subject_id)->select('name')->first();
         
-        $courses = $teacher->courses()->get();
-        
+        $courses = Course::where('teacher_id',$teacher->id)->get();
+
         // get total of students assigned with this teacher
         $courses_id = $teacher->courses()->select('id')->get();
+
         $totalStudents = DB::table('courses_students')->whereIn('course_id',$courses_id)->count();
-        $joiningDate = Carbon::parse($teacher->created_at)->format('d/m/Y'); 
+        $joiningDate = Carbon::parse($teacher->created_at)->format('d F Y'); 
         //---------------------------
         return view('Teachers.balance', compact('teacher', 'joiningDate','subject_name' ,'courses','totalStudents'));
     }
@@ -50,8 +51,8 @@ class TeacherController extends Controller
     {
         
         $now = Carbon::now();
-        $start = date($now->startOfWeek(Carbon::SUNDAY));
-        $end = date($now->endOfWeek(Carbon::THURSDAY));
+        $start = date($now->startOfWeek(Carbon::SATURDAY));
+        $end = date($now->endOfWeek(Carbon::FRIDAY));
         $course = Course::where('teacher_id', Auth::id())
         ->where('id', $course->id)->first();
         $course_lectures = $course->lectures->whereBetween('lecture_date', [$start, $end]);
@@ -72,7 +73,6 @@ class TeacherController extends Controller
         $lecture->meeting_password = $request->meeting_password;
         $lecture->meeting_id = $this->meeting_data->id;
         $lecture->save();
-
         return redirect()->route('teacher.course.lectures', [$course->id]);
     }
 
@@ -160,9 +160,12 @@ class TeacherController extends Controller
 
     public function get_schedule()
     {
+
+  
+
         $now = Carbon::now();
-        $start = date($now->startOfWeek(Carbon::SUNDAY));
-        $end = date($now->endOfWeek(Carbon::THURSDAY));
+        $start = date($now->startOfWeek(Carbon::SATURDAY));
+        $end = date($now->endOfWeek(Carbon::FRIDAY));
         $course = Course::where('teacher_id', Auth::id())->select('id')->get();
         $course_lectures = Lecture::whereIn('course_id',$course)->get();
         return response()->json($course_lectures);

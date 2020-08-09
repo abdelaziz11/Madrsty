@@ -22,9 +22,10 @@ Balance
                     <div class="main-info" style="  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding:0;position: relative;">
 
                         <img id="photo" src="{{ $teacher->photo }}" alt="Choose Photo...." width="30%" style="margin:65px 0 0 14px" >
-                        <input type="file" style="position: absolute; top:0px" id="file">
-                        <button style="position: absolute; top:30px" id="edit">Change/Add Photo</button>
-                        <table class="float-right" style="padding:50px 20px">
+<label class="" style=" ">
+   <i class="far fa-edit float-right edit" ></i> <input type="file" onchange="upload_profile_photo();" accept="image/*" id="file" hidden>
+</label>                      
+  <table class="float-right" style="padding:50px 20px">
                             <thead>
                                 <tr>
                                     <td colspan="3" style="text-align: center;"><h4 style="font-weight: bold;">{{ $teacher->name }}</h4></td>
@@ -55,16 +56,16 @@ Balance
                         <div class="balance mt-5">
                             <div class="totla">
                                 <span class="mr-5" style="color: #90696b;margin-left:0">My Total Balance</span>
-                                <span><h1 style="display: inline; margin-top:15px;margin-left:0">&dollar; 18450.00</h1></span>
+                                <span><h1 style="display: inline; margin-top:15px;margin-left:0"> 18450.00 EGP</h1></span>
                             </div>
                         </div>
                     </div>
                     <div class="more-info" style="  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
                         <h5>Description </h5>
                         <p class="text_label" id="desc"> {{ $teacher->description }} </p>
-                        <i class="far fa-edit float-right edit" style="margin-top: -40px;"></i>
+                        <i class="far fa-edit float-right edit" id="editD" style="margin-top: -40px;"></i>
                         <div class="edit-content" style="display: none;">
-                            <textarea name="" id="newDesc" style="width: 90%" rows="10">There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were.</textarea>
+                            <textarea name="" id="newDesc" style="width: 90%" rows="10"> {{ $teacher->description }} </textarea>
                             <button type="button" class="btn btn-primary" id="editDesc">save</button>
                             <button type="button" class="btn btn-danger">cancel</button>
                         </div>
@@ -88,145 +89,45 @@ Balance
                 </div>
                 <div class="offset-lg-1 offset-md-1 col-lg-7 col-md-6 xs-12">
                    <div class="courses">
-                        <h1>MY COURSES</h1>
+                        <h1>My Report</h1>
                         <div class="row">
+                            @foreach($courses as $course)
                             <div class="col-lg-6 col-sm-12 mb-5">
                                 <div class="content">
-                                    <span class="CourseName">Course Name</span>
+                                    <span class="CourseName">{{$course->name}}</span>
                                     <div class="counter">
                                         <div class="row">
                                             <div class="col-sm">
                                                 <div class="student-count" style="display: inline;">
-                                                    <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
+                                                    <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="{{$course->students()->count()}}" data-count-speed="20"></span>
                                                     <h5>Student</h5>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
 
                                                 <div class="balance-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
+                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="5000" data-count-speed="1000"></span>
                                                     <h5>balance</h5>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
                                                 <div class="lectures-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
+                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="{{$course->lectures()->count()}}" data-count-speed="20"></span>
                                                     <h5>lectures </h5>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
                                                 <div class="unanswered-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                <h6>unanswered questions </h6>
+                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="{{$course->questions()->count()}}" data-count-speed="20"></span>
+                                                <h6>questions</h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-12 mb-5">
-                                <div class="content">
-                                    <span class="CourseName">Course Name</span>
-                                    <div class="counter">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                <div class="student-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>Student</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-
-                                                <div class="balance-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>balance</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="lectures-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>lectures </h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="unanswered-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                <h6>unanswered questions </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12 mb-5">
-                                <div class="content">
-                                    <span class="CourseName">Course Name</span>
-                                    <div class="counter">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                <div class="student-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>Student</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-
-                                                <div class="balance-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>balance</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="lectures-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>lectures </h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="unanswered-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                <h6>unanswered questions </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12 mb-5">
-                                <div class="content">
-                                    <span class="CourseName">Course Name</span>
-                                    <div class="counter">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                <div class="student-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>Student</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-
-                                                <div class="balance-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>balance</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="lectures-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h5>lectures </h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="unanswered-count" style="display: inline;">
-                                                <span class="count number-counter" style="display: inline;"  data-count-from="0" data-count-to="100" data-count-speed="20"></span>
-                                                    <h6>unanswered questions </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                            @endforeach
+                                         
                            
                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             
@@ -291,7 +192,7 @@ Balance
         //-- Executing
         $('.number-counter').countTo();
 
-        $('.edit').click(function(){
+        $('#editD').click(function(){
 		$(this).hide();
 		$(this).prev().hide();
 		$(this).next().show();
@@ -325,8 +226,10 @@ Balance
 
         
       })
-        $('#edit').click(function(){
-            let storageRef = firebase.storage().ref();
+ function upload_profile_photo()
+ {
+
+  let storageRef = firebase.storage().ref();
             if(document.getElementById('file').files.length==0){
                 alert("Please Choose Photo Firstly")
                 return
@@ -352,9 +255,10 @@ Balance
                 }
                 });
         });
-    });
         })
 
+ }
+           
         
  
 

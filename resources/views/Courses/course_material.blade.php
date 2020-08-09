@@ -48,7 +48,7 @@ Course's Questions
 
     <div  class="box image wow  slideInUp" style=" box-shadow:0px 4px 10px -1px rgba(151, 171, 187, 0.7);">
       <div class="box-header">
-        <h3><a href=""><img src="" alt="M" />Me</a>
+        <h3><a href=""><img src="{{$teacher_photo}}" alt="M" />Me</a>
           <span style="margin-top: 5px;">{{$course->created_at}} <i class="fa fa-globe"></i></span>
         </h3>
       </div>

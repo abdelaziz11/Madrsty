@@ -76,7 +76,8 @@
        $('#content').show()
     }, 1000);
 
-       
+         $('nav a[href^="' + location.pathname.split("/")[1] + '"]').addClass('active');
+
     });
 
 </script>
