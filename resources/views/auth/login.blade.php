@@ -28,15 +28,15 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
     <title>Login</title>
     <link rel="stylesheet" href="{{asset('/css/main.css')}}">
-    
+
 </head>
 <body>
-	
+
 	<!-- Main navigation -->
 	<div class="container-fluid mt-3 mb-5">
 			<!--Grid row-->
 			<div class="row">
-	
+
 				<div class="col-md-4 display"  >
 					<h1>طالب</h1>
 					<a href="{{ route('register') }}"><img src="{{asset('/images/126-1260260_doctor-transparent-student-png-college-boy-student-png.png')}}" alt=""></a>
@@ -47,13 +47,13 @@
 					<div class="card login-card">
 						<h5 class="card-header info-color white-text text-center py-4  ">
 							<strong>تسجيل الدخول</strong>
-							
+
 						</h5>
-						<div class="card-body z-depth-2 px-4">	
+						<div class="card-body z-depth-2 px-4">
 							<div class="md-form">
 								<i class="fa fa-phone prefix grey-text"></i>
-								<input type="text" id="phoneNumber" name="phone_number" class="form-control">
-								<label for="phoneNumber">رقم التليفون </label>
+								<input type="text" id="phoneNumber" name="email" class="form-control">
+								<label for="phoneNumber">البريد الالكترونى </label>
 							</div>
 							<div class="md-form">
 								<i class="fas fa-key prefix grey-text"></i>
@@ -72,12 +72,12 @@
 					<h1>مدر س</h1>
 					<a href="{{ route('register') }}"><img src="images/6761753_preview.png" alt=""></a>
 				</div>
-	
+
 			</div>
-			<!--Grid row-->	
+			<!--Grid row-->
 	</div>
   	<!-- Main navigation -->
-	
+
 
 
 	<script>
@@ -87,7 +87,7 @@
 				x[0].style.visibility = "visible";
 				x[1].style.visibility = "visible";
 			}
-			
+
 	</script>
 </body>
 </html>

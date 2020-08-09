@@ -1915,6 +1915,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1933,6 +1935,70 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2918,7 +2984,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("navbar"), _vm._v(" "), _c("router-view")], 1)
+  return _c(
+    "div",
+    [
+      _c("navbar"),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "content" } }, [_c("router-view")], 1)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2942,332 +3016,658 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", { staticClass: "teacher-profile" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-4 col-md-5 xs-12" }, [
-          _c("div", { staticClass: "main-info" }, [
-            _c("img", {
-              attrs: { src: __webpack_require__(/*! ../../images/profile-img.webp */ "./resources/images/profile-img.webp"), alt: "" }
-            }),
-            _vm._v(" "),
-            _c("h1", [_vm._v(_vm._s(_vm.name))]),
-            _vm._v(" "),
-            _c("p", [_vm._v("You want it done right? Message me")]),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("span", [_vm._v("(165 reviews)")]),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-dark-green", attrs: { type: "button" } },
-              [_vm._v("Contact ME")]
-            ),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _vm._m(1)
-          ]),
-          _vm._v(" "),
-          _vm._m(2)
-        ]),
-        _vm._v(" "),
-        _vm._m(3)
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "fas fa-star" }),
-      _vm._v(" "),
-      _c("i", { staticClass: "fas fa-star" }),
-      _vm._v(" "),
-      _c("i", { staticClass: "fas fa-star" }),
-      _vm._v(" "),
-      _c("i", { staticClass: "fas fa-star" }),
-      _vm._v(" "),
-      _c("i", { staticClass: "fas fa-star" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", [
-      _c("tr", [
-        _c("td", [_c("i", { staticClass: "fas fa-map-marker" })]),
-        _vm._v(" "),
-        _c("td", [_vm._v("From")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("United States")])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_c("i", { staticClass: "fas fa-user" })]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Member since")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("May 2019")])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_c("i", { staticClass: "fas fa-clock" })]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Avg. Response Time")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("2 hours")])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_c("i", { staticClass: "fas fa-location-arrow" })]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Last Delivery")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("6 hours")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "more-info" }, [
-      _c("h5", [_vm._v("Description")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were."
-        )
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Languages")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("English  - Arabic")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Linked Accounts")]),
-      _vm._v(" "),
-      _c("p", [_c("i", { staticClass: "fab fa-twitter" }), _vm._v(" twitter")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Skills")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
-        _vm._v("my skills")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
-        _vm._v("my skills")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
-        _vm._v("my skills")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
-        _vm._v("my skills")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
-        _vm._v("my skills")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
-        _vm._v("my skills")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-8 col-md-7 xs-12" }, [
-      _c("div", { staticClass: "courses" }, [
-        _c("h1", [_vm._v("MY COURSES")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mdb-lightbox" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
+    return _c("main", { staticClass: "teacher-profile" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-4 col-md-5 xs-12" }, [
+            _c(
+              "div",
+              {
+                staticClass: "main-info",
+                staticStyle: {
+                  "box-shadow":
+                    "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+                  padding: "0"
+                }
+              },
+              [
                 _c("img", {
-                  staticClass: "img-fluid ",
+                  staticStyle: { margin: "65px 0 0 14px" },
                   attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
+                    src: "/images/profile-img.webp",
+                    alt: "",
+                    width: "30%"
                   }
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
+                _c(
+                  "table",
+                  {
+                    staticClass: "float-right",
+                    staticStyle: { padding: "50px 20px" }
+                  },
+                  [
+                    _c("thead", [
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticStyle: { "text-align": "center" },
+                            attrs: { colspan: "3" }
+                          },
+                          [
+                            _c(
+                              "h4",
+                              { staticStyle: { "font-weight": "bold" } },
+                              [_vm._v("teacher name")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", [
+                          _c("i", { staticClass: "fas fa-map-marker" })
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("subject")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("arabic")])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_c("i", { staticClass: "fas fa-clock" })]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Total students")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("15")])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_c("i", { staticClass: "fas fa-user" })]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Member since")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("12/5/2020")])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "balance mt-5" }, [
+                  _c("div", { staticClass: "totla" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "mr-5",
+                        staticStyle: { color: "#90696b", "margin-left": "0" }
+                      },
+                      [_vm._v("My Total Balance")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c(
+                        "h1",
+                        {
+                          staticStyle: {
+                            display: "inline",
+                            "margin-top": "15px",
+                            "margin-left": "0"
+                          }
+                        },
+                        [_vm._v("$ 18450.00")]
+                      )
+                    ])
                   ])
                 ])
-              ])
-            ]),
+              ]
+            ),
             _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
+            _c(
+              "div",
+              {
+                staticClass: "more-info",
+                staticStyle: {
+                  "box-shadow":
+                    "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)"
+                }
+              },
+              [
+                _c("h5", [_vm._v("Description ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "text_label" }, [
+                  _vm._v(
+                    "There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were."
+                  )
+                ]),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "far fa-edit float-right edit",
+                  staticStyle: { "margin-top": "-40px" }
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
+                _c(
+                  "div",
+                  {
+                    staticClass: "edit-content",
+                    staticStyle: { display: "none" }
+                  },
+                  [
+                    _c(
+                      "textarea",
+                      {
+                        staticStyle: { width: "90%" },
+                        attrs: { name: "", id: "", rows: "10" }
+                      },
+                      [
+                        _vm._v(
+                          "There's a deep, engaging voice you're looking for. It's powerful, yet gentle. You can hear it. In addition to being a singer-songwriter and author, I narrate audiobooks and voice projects for folks like you. I find great honor in delivering flawless work, no matter how big or small the project. You'll notice I can eliminate my natural southern accent, if it doesn't fit the project. And if you need a soft, southern affect, I'm your guy. Lastly, as a highly educated man and a member of Mensa, your more advanced vocabulary is safe in my hands...or mouth as it were."
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("save")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("cancel")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h5", [_vm._v("Languages")]),
+                _vm._v(" "),
+                _c("p", [_vm._v("English  - Arabic")]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h5", [_vm._v("Linked Accounts")]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("i", { staticClass: "fab fa-twitter" }),
+                  _vm._v(" twitter")
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h5", [_vm._v("Skills")]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
+                  _vm._v("my skills")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
+                  _vm._v("my skills")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
+                  _vm._v("my skills")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
+                  _vm._v("my skills")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
+                  _vm._v("my skills")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-outline-blue-grey" }, [
+                  _vm._v("my skills")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "offset-lg-1 offset-md-1 col-lg-7 col-md-6 xs-12" },
+            [
+              _c("div", { staticClass: "courses" }, [
+                _c("h1", [_vm._v("MY COURSES")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-lg-6 col-sm-12 mb-5" }, [
+                    _c("div", { staticClass: "content" }, [
+                      _c("span", { staticClass: "CourseName" }, [
+                        _vm._v("Course Name")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "counter" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "student-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("Student")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "balance-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("balance")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "lectures-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("lectures ")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "unanswered-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h6", [_vm._v("unanswered questions ")])
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-6 col-sm-12 mb-5" }, [
+                    _c("div", { staticClass: "content" }, [
+                      _c("span", { staticClass: "CourseName" }, [
+                        _vm._v("Course Name")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "counter" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "student-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("Student")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "balance-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("balance")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "lectures-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("lectures ")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "unanswered-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h6", [_vm._v("unanswered questions ")])
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-6 col-sm-12 mb-5" }, [
+                    _c("div", { staticClass: "content" }, [
+                      _c("span", { staticClass: "CourseName" }, [
+                        _vm._v("Course Name")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "counter" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "student-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("Student")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "balance-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("balance")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "lectures-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("lectures ")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "unanswered-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h6", [_vm._v("unanswered questions ")])
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-6 col-sm-12 mb-5" }, [
+                    _c("div", { staticClass: "content" }, [
+                      _c("span", { staticClass: "CourseName" }, [
+                        _vm._v("Course Name")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "counter" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "student-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("Student")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "balance-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("balance")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "lectures-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v("lectures ")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "unanswered-count",
+                                staticStyle: { display: "inline" }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "count number-counter",
+                                  staticStyle: { display: "inline" },
+                                  attrs: {
+                                    "data-count-from": "0",
+                                    "data-count-to": "100",
+                                    "data-count-speed": "20"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("h6", [_vm._v("unanswered questions ")])
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
                   ])
                 ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "view overlay zoom" }, [
-                _c("img", {
-                  staticClass: "img-fluid ",
-                  attrs: {
-                    src:
-                      "https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg",
-                    alt: "smaple image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mask flex-center" }, [
-                  _c("p", { staticClass: "white-text" }, [
-                    _vm._v("Zoom effect")
-                  ])
-                ])
-              ])
-            ])
-          ])
+            ]
+          )
         ])
       ])
     ])
@@ -18968,17 +19368,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/images/profile-img.webp":
-/*!*******************************************!*\
-  !*** ./resources/images/profile-img.webp ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/profile-img.webp?f43d32eae2187112f0df744f39581dc2";
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -19461,8 +19850,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Madrsty\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Madrsty\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laravel_projects\Madrsty\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laravel_projects\Madrsty\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

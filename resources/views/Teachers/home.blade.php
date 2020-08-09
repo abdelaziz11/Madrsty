@@ -6,10 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{csrf_token()}}">
         <title>Treclon</title>
-        <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/teacher-profile.css') }}" >
-        <link rel="stylesheet" href="{{ asset('css/teacher-courses.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/teacher-students.css') }}">
+        {{-- <link href=" {{ mix('css/app.css') }}" rel="stylesheet"> --}}
+        <link rel="stylesheet" href="{{ asset('/css/teacher-profile.css') }}" >
+        {{-- <link rel="stylesheet" href="{{ asset('css/teacher-courses.css') }}"> --}}
 
             <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -19,7 +18,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/teacher-courses.css">
 
 
     <!-- JQuery -->
