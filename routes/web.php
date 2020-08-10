@@ -85,7 +85,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     });
 
 Route::group(['prefix' => 'student'], function () {
-    Route::get('/home', 'Student\StudentController@home')->name('students.home');
+    Route::get('/home', 'Student\StudentController@profile')->name('students.home');
+
 });
 
 
@@ -94,3 +95,10 @@ Route::group(['middleware' => 'auth:student'], function () {
 });
 
 
+Route::group(['prefix' => 'student','middleware' => ['auth:student','validateRole']], function () {
+
+    Route::get('/courseDetails/{id}', 'Student\StudentController@courseMaterials');
+
+    Route::get('/courseQuestions/{id}', 'Student\StudentController@courseQuestions');
+
+});
