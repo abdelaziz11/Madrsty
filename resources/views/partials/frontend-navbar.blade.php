@@ -14,6 +14,7 @@
     <div class="collapse navbar-collapse" id="basicExampleNav">
 
         <!-- Links -->
+        @if(Auth::guard('teacher')->check())
         <ul class="navbar-nav mr-auto" id="aa">
             <li class="nav-item  ">
             <a class="nav-link hover-underline-animation" href="{{ route('teachers.profile') }}">Profile
@@ -31,8 +32,23 @@
              <li class="nav-item">
                 <a class="nav-link hover-underline-animation" href="{{ route('teacher.course.create') }}">Add course</a>
             </li>
-
         </ul>
+        @else
+        <ul class="navbar-nav mr-auto" id="aa">
+            <li class="nav-item  ">
+            <a class="nav-link hover-underline-animation" href="{{ route('student.home') }}">Profile
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link hover-underline-animation" href="{{ route('student.courses') }}">Classroom</a>
+            </li>
+
+               <li class="nav-item">
+                <a class="nav-link hover-underline-animation" href="{{ route('student.week.course.lectures') }}">schedule</a>
+            </li>
+        </ul>
+        @endif
         <!-- Links -->
 
         <form class="form-inline">

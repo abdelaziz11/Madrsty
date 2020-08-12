@@ -27,12 +27,15 @@ Course's Questions
 
                         <p>Asked By : <span> {{ $question->student->name }} </span>  From : <span> {{ $question->created_at->diffForHumans() }} </span>
                             <strong class="">
-                                <a href="{{ route('student.question.answers', [$student->id, $course->id, $question->id]) }}" class="float-right wow fadeIn">Show All Answers</a>
+                                <a href="{{ route('student.question.answers', [$course->id, $question->id]) }}" class="float-right wow fadeIn">Show All Answers</a>
                             </strong>
                         </p>
                         <hr>
                         @if($question->get_first_answer())
-                        <p>{{ $question->get_first_answer() }}</p>
+                            <strong>{{ $question->get_first_answer()->body }}</strong>
+                            <p>Answered By : <strong>
+                                {{ $question->get_first_answer()->teacher !== null ? $question->get_first_answer()->teacher->name : $question->get_first_answer()->student->name}}
+                            </strong></p>
                         @else
                         <strong style="color:red">No Answers Provided Yet!</strong>
                         @endif
@@ -51,7 +54,7 @@ Course's Questions
             <br>
             <hr>
             <h4>Add New Question</h4>
-            <form action="{{ route('student.question.store', [$student->id, $course->id]) }}" method="POST">
+            <form action="{{ route('student.question.store', [$course->id]) }}" method="POST">
                 @csrf
                 @include('partials.errors')
 

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Teacher;
 
 use Carbon\Carbon;
 use App\Model\Grade;
+use App\Model\Answer;
 use App\Model\Course;
 use Firebase\JWT\JWT;
 use App\Model\Lecture;
+use App\Model\Question;
 use GuzzleHttp\Client;
 use App\Model\Teacher;
 use Illuminate\Http\Request;
@@ -15,14 +17,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Courses\CreateCourseRequest;
 use App\Http\Requests\Lectures\CreateLectureRequest;
+use App\Http\Requests\Answers\CreateAnswerRequest;
 use App\Model\Subject;
 
 class TeacherController extends Controller
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('auth:teacher')->except([]);
         $this->meeting_data = '';
+        $course_id_segment = $request->segment(3);
+        $this->middleware('userValidCourse:'.$course_id_segment)->except(['profile', 'teacher_courses', 'editDescription', 'changePhoto', 'add_answer',
+        'add_new_lecture', 'store_new_course', 'add_new_course']);
     }
 
     public function profile()
@@ -85,7 +91,7 @@ class TeacherController extends Controller
 
     public function add_new_course()
     {
-           $teacher = Auth::User();
+        $teacher = Auth::User();
         $teacher_courses_grades = $teacher->courses->pluck('grade_id');
         $grades = Grade::whereNotIn('id', $teacher_courses_grades)->get();
         return view('Teachers.add-course', compact('grades'));
@@ -101,6 +107,18 @@ class TeacherController extends Controller
         $course->save();
 
         return redirect()->route('teachers.courses');
+    }
+
+    public function add_answer(CreateAnswerRequest $request, Question $question)
+    {
+        $answer = new Answer();
+        $answer->body = $request->body;
+        $answer->question_id = $question->id;
+        $answer->teacher_id = Auth::id();
+        $answer->student_id = null;
+        $answer->save();
+
+        return redirect()->back();
     }
 
 
@@ -160,9 +178,6 @@ class TeacherController extends Controller
 
     public function get_schedule()
     {
-
-  
-
         $now = Carbon::now();
         $start = date($now->startOfWeek(Carbon::SATURDAY));
         $end = date($now->endOfWeek(Carbon::FRIDAY));

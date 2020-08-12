@@ -70,13 +70,11 @@ Course's Questions
 
                             <ul style="text-align: left;list-style: none;width: 100%;margin-top: 30px;">
                               <hr style="margin: 0px;">
-                              <li >  <a class="hvr-sweep-to-right" href="{{ route('student.course.materials', [$student->id, $course->id]) }}">Course Materials</a></li>
+                              <li >  <a class="hvr-sweep-to-right" href="{{ route('student.course.materials', [$course->id]) }}">Course Materials</a></li>
                                 <hr style="margin: 0px;">
-                                <li>  <a class="hvr-sweep-to-right"  href="{{ route('student.course.lectures', [$student->id, $course->id]) }}">Lectures</a></li>
+                                <li>  <a class="hvr-sweep-to-right"  href="{{ route('student.course.lectures', [$course->id]) }}">Lectures</a></li>
                                 <hr style="margin: 0px;">
-                                <li>  <a class="hvr-sweep-to-right"  href="{{ route('student.week.course.lectures', [$student->id, $course->id]) }}">This Week Lectures</a></li>
-                                <hr style="margin: 0px;">
-                                <li><a class=" hvr-sweep-to-right "  href="{{route('student.course.questions', [$student->id, $course->id])}}">Questions</a></li>             
+                                <li><a class=" hvr-sweep-to-right "  href="{{route('student.course.questions', [$course->id])}}">Questions</a></li>             
                             </ul>
                     </div>
                   </div>

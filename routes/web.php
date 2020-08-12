@@ -52,7 +52,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
 
     Route::get('/courses/{course}/questions', 'Teacher\TeacherController@get_course_questions')->name('teacher.course.questions');
 
-    Route::post('/courses/questions/{question}/add-answer', 'Answer\AnswerController@store')->name('answer.store');
+    Route::post('/courses/questions/{question}/add-answer', 'Teacher\TeacherController@add_answer')->name('answer.store');
 
     Route::get('/courses/questions/{question}/all-answers', 'Answer\AnswerController@all_question_answers')->name('question.answers');
 
@@ -94,15 +94,15 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
 
 Route::group(['prefix' => 'student','middleware' => ['auth:student']], function () {
 
-    Route::get('/home', 'Student\StudentController@profile')->name('students.home');
-    Route::get('/{student}/courses', 'Student\StudentController@courses')->name('student.courses');
-    Route::get('/{student}/courses/{course}/materials', 'Student\StudentController@course_materials')->name('student.course.materials');
-    Route::get('/{student}/courses/{course}/questions', 'Student\StudentController@course_questions')->name('student.course.questions');
-    Route::post('/{student}/courses/{course}/questions', 'Student\StudentController@store_question')->name('student.question.store');
-    Route::get('/{student}/courses/{course}/lectures', 'Student\StudentController@course_lectures')->name('student.course.lectures');
-    Route::get('/{student}/courses/{course}/week-lectures', 'Student\StudentController@week_course_lectures')->name('student.week.course.lectures');
-    Route::get('/{student}/courses/{course}/questions/{question}/answers', 'Student\StudentController@question_answers')->name('student.question.answers');
-    Route::post('/{student}/courses/{course}/questions/{question}/answers', 'Student\StudentController@add_answer')->name('student.answer.store');
+    Route::get('/home', 'Student\StudentController@profile')->name('student.home');
+    Route::get('/courses', 'Student\StudentController@courses')->name('student.courses');
+    Route::get('/courses/{course}/materials', 'Student\StudentController@course_materials')->name('student.course.materials');
+    Route::get('/courses/{course}/questions', 'Student\StudentController@course_questions')->name('student.course.questions');
+    Route::post('/courses/{course}/questions', 'Student\StudentController@store_question')->name('student.question.store');
+    Route::get('/courses/{course}/lectures', 'Student\StudentController@course_lectures')->name('student.course.lectures');
+    Route::get('/current-week-lectures', 'Student\StudentController@all_courses_lectures')->name('student.week.course.lectures');
+    Route::get('/courses/{course}/questions/{question}/answers', 'Student\StudentController@question_answers')->name('student.question.answers');
+    Route::post('/courses/{course}/questions/{question}/answers', 'Student\StudentController@add_answer')->name('student.answer.store');
     Route::get('/courseDetails/{id}', 'Student\StudentController@courseMaterials');
 
     Route::get('/courseQuestions/{id}', 'Student\StudentController@courseQuestions');

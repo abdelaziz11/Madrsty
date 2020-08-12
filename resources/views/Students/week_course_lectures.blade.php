@@ -30,18 +30,18 @@ Add New Lecture
         <div class="col-md-4 col-xs-12 wow zoomInUp" >
             <div class="lec-name">
                 <div class="card-header">
-                Course <strong style="color:red">{{ $course->name }}</strong> lectures This Week
+                    <strong>Lectures This Week</strong>
                 </div>
 
                 <div class="card-body" >
                     @if($week_course_lectures->isEmpty())
                     <div>  
-                            <strong>Empty  </strong>
+                            <strong style="color:red">Empty</strong>
                         </div>
                     @endif
 
                         <table class="table table-borderd table-hover">
-                        <th><strong>Lecture Name  </strong></th>
+                        <th>Lecture Name </th>
                         
                         @foreach($week_course_lectures as $lecture)
 

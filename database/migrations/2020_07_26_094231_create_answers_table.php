@@ -17,9 +17,13 @@ class CreateAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->text('body');
             $table->unSignedBigInteger('question_id');
+            $table->unSignedBigInteger('student_id')->nullable();
+            $table->unSignedBigInteger('teacher_id')->nullable();
             $table->timestamps();
 
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
 
         });
     }

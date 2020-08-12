@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\Grade;
+use App\Model\Answer;
 use App\Model\Course;
 use App\Model\Question;
 use Illuminate\Database\Eloquent\Model;
@@ -30,5 +31,10 @@ class Student extends Authenticatable
     public function questions()
     {
         return $this->hasMany(Question::class, 'student_id', 'id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'student_id', 'id');
     }
 }

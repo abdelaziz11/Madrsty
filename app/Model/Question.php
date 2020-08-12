@@ -29,7 +29,7 @@ class Question extends Model
 
     public function get_first_answer()
     {
-        $first_answer = $this->answers()->orderBy('created_at', 'DESC')->pluck('body')->first();
+        $first_answer = $this->answers()->orderBy('created_at', 'DESC')->select('body', 'teacher_id', 'student_id')->first();
         return $first_answer;
     }
 }

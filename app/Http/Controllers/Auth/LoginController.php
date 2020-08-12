@@ -47,7 +47,7 @@ class LoginController extends Controller
 
         if(Auth::guard('student')->attempt($credentials))
         {
-            return redirect()->route('students.home');
+            return redirect()->route('student.home');
         }
         else if (Auth::guard('teacher')->attempt($credentials))
         {
@@ -63,6 +63,6 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware(['guest', 'guest:teacher', 'guest:student'])->except('logout');
     }
 }

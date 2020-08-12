@@ -20,10 +20,11 @@ Question's Answers
                             <hr>
                             @foreach($question_answers as $answer)
                                 <div>{{ $answer->body }}</div>
+                                <div>Answered By : <strong>{{ $answer->teacher_id != null ? $answer->teacher->name : $answer->student->name }}</strong></div>
                                 <hr>
                             @endforeach    
                             <div class="form-group basic-textarea">
-                                <form action="{{ route('answer.store', [ $question]) }}" method="POST">
+                                <form action="{{ route('answer.store', [$question->id]) }}" method="POST">
                                     @csrf
                                     @include('partials.errors')
                                     <textarea name="body" class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your answer here..."></textarea>
