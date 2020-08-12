@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Student;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Question;
 use App\Model\Answer;
 use App\Model\Course;
+use App\Model\Student;
 use App\Model\CourseDetail;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Answers\CreateAnswerRequest;
+use App\Http\Requests\Questions\CreateQuestionRequest;
 
 
 
@@ -23,19 +27,57 @@ class StudentController extends Controller
     {
         $student = Auth::User();
         $courses = $student->courses()->get();
-        dd($courses);
+        return view('Students.home', compact('student', 'courses'));
     }
 
-    public function courseMaterials($course_id)
+    public function courses()
     {
-        $details = CourseDetail::where('course_id',$course_id)->get();
-        dd($details);
+        $student = Auth::User();
+        $courses = $student->courses()->get();
+        return view('Students.courses', compact('student', 'courses'));
     }
 
-    public function courseQuestions($course_id)
+    public function course_materials(Student $student, Course $course)
     {
-        $questions = Question::where('course_id',$course_id)->get();
-        dd($questions);
+        $course_materials = CourseDetail::where('course_id',$course->id)->get();
+        return view('Students.course_materials', compact('student', 'course', 'course_materials'));
+    }
+
+    public function course_questions(Student $student, Course $course)
+    {
+        $course_questions = Question::where('course_id',$course->id)->get();
+        return view('Students.course_questions', compact('student', 'course', 'course_questions'));
+    }
+
+    public function course_lectures(Student $student, Course $course)
+    {
+        $course_lectures = $course->lectures;
+        return view('Students.course_lectures', compact('course', 'course_lectures'));
+    }
+
+    public function week_course_lectures(Student $student, Course $course)
+    {
+        $now = Carbon::now();
+        $start = date($now->startOfWeek(Carbon::SATURDAY));
+        $end = date($now->endOfWeek(Carbon::FRIDAY));
+        $week_course_lectures = $course->lectures->whereBetween('lecture_date', [$start, $end]);
+        return view('Students.week_course_lectures', compact('course', 'week_course_lectures'));
+    }
+
+    public function store_question(CreateQuestionRequest $request, Student $student, Course $course)
+    {
+        $question = new Question;
+        $question->title = $request->title;
+        $question->course_id = $course->id;
+        $question->student_id = $student->id;
+        $question->save();
+        return back();
+    }
+
+    public function question_answers(Student $student, Course $course, Question $question)
+    {
+        $answers = Answer::where('question_id',$question->id)->get();
+        return view('Students.question_answers', compact('student', 'course', 'question', 'answers'));
     }
 
     public function studentQuestions($course_id,$student_id)
@@ -45,9 +87,14 @@ class StudentController extends Controller
         return response()->json($questions);
     }
 
-    public function questionAnswers($question_id)
+    
+    public function add_answer(CreateAnswerRequest $request, Student $student, Course $course, Question $question)
     {
-        $answers = Answer::where('question_id',$question_id)->get();
-        return response()->json($answers);
+        $answer = new Answer;
+        $answer->body = $request->body;
+        $answer->question_id = $question->id;
+        $answer->save();
+        return back();
     }
+    
 }

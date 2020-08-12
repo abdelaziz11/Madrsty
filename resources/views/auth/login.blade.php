@@ -52,7 +52,7 @@
 						<div class="card-body z-depth-2 px-4">	
 							<div class="md-form">
 								<i class="fa fa-phone prefix grey-text"></i>
-								<input type="text" id="phoneNumber" name="email" class="form-control">
+								<input type="text" id="phoneNumber" name="phone_number" class="form-control">
 								<label for="phoneNumber">رقم التليفون </label>
 							</div>
 							<div class="md-form">

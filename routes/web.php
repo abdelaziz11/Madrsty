@@ -84,19 +84,25 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     })->name('zoom');
     });
 
-Route::group(['prefix' => 'student'], function () {
+
+
+// Route::group(['prefix' => 'students', 'middleware' => 'auth:student'], function () {
+//     Route::get('/home', 'Student\StudentController@home')->name('students.home');
+//     Route::get('/home', 'Student\StudentController@home')->name('students.home');
+// });
+
+
+Route::group(['prefix' => 'student','middleware' => ['auth:student']], function () {
+
     Route::get('/home', 'Student\StudentController@profile')->name('students.home');
-
-});
-
-
-Route::group(['middleware' => 'auth:student'], function () {
-    Route::get('/home', 'Student\StudentController@home')->name('students.home');
-});
-
-
-Route::group(['prefix' => 'student','middleware' => ['auth:student','validateRole']], function () {
-
+    Route::get('/{student}/courses', 'Student\StudentController@courses')->name('student.courses');
+    Route::get('/{student}/courses/{course}/materials', 'Student\StudentController@course_materials')->name('student.course.materials');
+    Route::get('/{student}/courses/{course}/questions', 'Student\StudentController@course_questions')->name('student.course.questions');
+    Route::post('/{student}/courses/{course}/questions', 'Student\StudentController@store_question')->name('student.question.store');
+    Route::get('/{student}/courses/{course}/lectures', 'Student\StudentController@course_lectures')->name('student.course.lectures');
+    Route::get('/{student}/courses/{course}/week-lectures', 'Student\StudentController@week_course_lectures')->name('student.week.course.lectures');
+    Route::get('/{student}/courses/{course}/questions/{question}/answers', 'Student\StudentController@question_answers')->name('student.question.answers');
+    Route::post('/{student}/courses/{course}/questions/{question}/answers', 'Student\StudentController@add_answer')->name('student.answer.store');
     Route::get('/courseDetails/{id}', 'Student\StudentController@courseMaterials');
 
     Route::get('/courseQuestions/{id}', 'Student\StudentController@courseQuestions');

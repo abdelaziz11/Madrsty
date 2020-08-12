@@ -41,26 +41,26 @@ class LoginController extends Controller
     }
 
 
-         public function login(Request $request)
+    public function login(Request $request)
     {
-            $credentials = ['email'=>$request->email,'password'=>$request->password];
+        $credentials = ['phone_number'=>$request->phone_number,'password'=>$request->password];
 
-      if(Auth::guard('student')->attempt(['email'=>$request->email,'password'=>$request->password]))
+        if(Auth::guard('student')->attempt($credentials))
         {
             return redirect()->route('students.home');
         }
-        else if (Auth::guard('teacher')->attempt(['email'=>$request->email,'password'=>$request->password]))
+        else if (Auth::guard('teacher')->attempt($credentials))
         {
             return redirect()->route('teachers.profile');
         }
         else
         {
-            dd('error');
             return back()->withErrors(['email'=>'Invalid Attempt! Check Credentials']);
         }
 
-
     }  
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
