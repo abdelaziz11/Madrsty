@@ -108,3 +108,5 @@ Route::group(['prefix' => 'student','middleware' => ['auth:student']], function 
     Route::get('/courseQuestions/{id}', 'Student\StudentController@courseQuestions');
 
 });
+
+Route::get('fire-event', 'HomeController@fire_event')->name('fire-event');

@@ -51,11 +51,49 @@
         @endif
         <!-- Links -->
 
-        <form class="form-inline">
-            <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        @if(Auth::check())
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                <li class="dropdown dropdown-notifications">
+                    <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
+                    <i data-count="{{Auth::User()->unreadNotifications->count()}}" class="glyphicon glyphicon-bell notification-icon"></i>
+                    </a>
+    
+                    <div class="dropdown-container">
+                    <div class="dropdown-toolbar">
+                        <div class="dropdown-toolbar-actions">
+                        <a href="#">Mark all as read</a>
+                        </div>
+                    <h3 class="dropdown-toolbar-title">Notifications (<span class="notif-count">{{ Auth::User()->unreadNotifications->count() }}</span>)</h3>
+                    </div>
+                    <ul class="dropdown-menu">
+                        @foreach(Auth::User()->unreadNotifications as $notification)
+                        <li class="notification active">
+                            <div class="media">
+                                <div class="media-left">
+                                <div class="media-object">
+                                    <img src="https://api.adorable.io/avatars/71/a.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
+                                </div>
+                                </div>
+                                <div class="media-body">
+                                <strong class="notification-title">{{ $notification['data']['message']}}</strong>
+                                <!--p class="notification-desc">Extra description can go here</p-->
+                                <div class="notification-meta">
+                                    <small class="timestamp">{{ $notification->created_at->diffForHumans() }}</small>
+                                </div>
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All</a>
+                    </div>
+                    </div>
+                </li>
+                </ul>
             </div>
-        </form>
+          @endif
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
         </form>

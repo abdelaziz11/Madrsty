@@ -7,11 +7,14 @@ use App\Model\Answer;
 use App\Model\Course;
 use App\Model\Question;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class Student extends Authenticatable
 {
+    use Notifiable;
+    
     protected $fillable = ['name', 'email', 'password', 'grade_id'];
     
     protected $guarded = ['password'];
