@@ -47,6 +47,7 @@ class RandomNotification extends Notification
     {
         return [
             'message' => $this->message,
+            'hyper_link' => 'ahmed/gamal/s',
         ];
     }
 

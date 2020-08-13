@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Event;
+use App\Model\Course;
 use App\Model\Student;
 use Illuminate\Http\Request;
 use App\Events\NewNotificationEvent;
@@ -29,10 +30,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function fire_event()
+    public function fire_event(Course $course)
     {
-        $user = Student::find(1);
-        event(new NewNotificationEvent($user, 'Hello world'));
+        $course_students = $course->students;
+        event(new NewNotificationEvent($course_students, 'wlalalaaaa'));
 
     }
 }

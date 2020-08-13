@@ -75,6 +75,8 @@ Course's Questions
                                 <li>  <a class="hvr-sweep-to-right"  href="{{ route('student.course.lectures', [$course->id]) }}">Lectures</a></li>
                                 <hr style="margin: 0px;">
                                 <li><a class=" hvr-sweep-to-right "  href="{{route('student.course.questions', [$course->id])}}">Questions</a></li>             
+                                <hr style="margin: 0px;">
+                                <li><a class=" hvr-sweep-to-right "  href="{{route('fire-event', $course->id)}}">Notify Students</a></li>             
                             </ul>
                     </div>
                   </div>

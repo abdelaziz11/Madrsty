@@ -30,7 +30,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'auth:teacher'], function (
     
     Route::get('/schedule','Teacher\TeacherController@show_schedule')->name('teachers.schedule');
 
-    
+    Route::get('fire-event/courses/{course}', 'HomeController@fire_event')->name('fire-event');
 
     Route::get('/profile', 'Teacher\TeacherController@profile')->name('teachers.profile');
     // Route::get('/balance', function(){
@@ -109,4 +109,3 @@ Route::group(['prefix' => 'student','middleware' => ['auth:student']], function 
 
 });
 
-Route::get('fire-event', 'HomeController@fire_event')->name('fire-event');
